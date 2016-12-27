@@ -1,0 +1,18 @@
+---
+
+## Query configuration in text format
+## and Store the configuration in backup directory
+## !!! Will DELETE PREVIOUD BACKUP and create a new one !!!
+
+- name: Get config with Ansible core module
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+  - name: Backup running config
+    junos_config:
+      provider: "{{ credentials }}"
+      backup: yes
+

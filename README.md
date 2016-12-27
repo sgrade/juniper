@@ -1,1 +1,2 @@
-# juniper
+Test scripts for Juniper automation
+

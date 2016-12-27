@@ -1,0 +1,22 @@
+# DONT USE
+# vMX cannot restore properly after reboot. Manual reboot needed.
+# After configuring and rebooting the configuration is not stored
+# Haven't tried with request system zeroize local, but according to the vMX docs, "local" is not supported yet
+
+---
+- name: Zeroize config with Ansible core module
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+  - name: Zeroizing
+    junos_command:
+      provider: "{{ credentials }}"
+      commands: 
+        #- show version
+        #- request system zeroize local
+        - request system zeroize
+
+

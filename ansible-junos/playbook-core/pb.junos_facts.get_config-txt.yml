@@ -1,0 +1,20 @@
+---
+  ## This playbook will query config in text format
+  ## and store it
+
+- name: Backup config
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+  - name: Get config in TEXT format
+    junos_facts:
+      config: yes
+      config_format: text
+      provider: "{{ credentials }}" 
+    register: result_text
+
+  - name: Save config (TEXT format)  in ../backups/
+    copy: content="{{ result_text.ansible_facts.config }}" dest=../backups/{{ inventory_hostname }}.save_text.conf

@@ -1,0 +1,16 @@
+# DOESNT WORK despite that the config is the same as in backup playbook
+# seems something wrong in the docs or in the core module
+
+---
+- name: Zeroize config with Ansible core module
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+  - name: Zeroizing
+    junos_config:
+      provider: "{{ credentials }}"
+      zeroize: yes
+
