@@ -1,5 +1,0 @@
-credential:
-  host: "{{ ansible_host }}"
-  port: "{{ ansible_ssh_port }}"
-  username: "{{ ansible_user }}"
-  password: "{{ ansible_ssh_pass }}"
