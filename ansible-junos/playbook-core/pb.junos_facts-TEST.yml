@@ -6,6 +6,8 @@
   hosts: all
   connection: local
   gather_facts: no
+  vars_files: 
+    - ../external_vars.yml
 
   tasks:
 
@@ -16,5 +18,7 @@
       provider: "{{ credentials }}" 
     register: result_text
 
-  - name: Save config (TEXT format)  in ../backups/
-    copy: content="{{ result_text.ansible_facts.config }}" dest=../backups/{{ inventory_hostname }}.save_text.conf
+  - name: Save config (TEXT format)  in configs/
+    copy: 
+      content="{{ result_text.ansible_facts.config }}" 
+      dest=../configs/{{ course_name }}/{{ section_name }}/{{ inventory_hostname }}.{{ filename_modifier | default('') }}.conf

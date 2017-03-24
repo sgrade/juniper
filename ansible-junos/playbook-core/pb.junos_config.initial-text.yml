@@ -1,0 +1,18 @@
+---
+## Replaces current config with
+## initial configuration from ../configs/ directory
+
+- name: Push configuration
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+  - name: pushing INITIAL config from ../configs/
+    junos_config:
+      provider: "{{ credentials }}"
+      src: ../configs/{{ inventory_hostname }}.initial-text.conf
+      src_format: text
+      update: overwrite
+

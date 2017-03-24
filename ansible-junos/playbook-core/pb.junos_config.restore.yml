@@ -1,0 +1,18 @@
+---
+## Restore configuration from ../configs/ directory
+## !!! It is different from config in backup directory !!!
+
+- name: Push configuration
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+  - name: pushing config from ../configs/
+    junos_config:
+      provider: "{{ credentials }}"
+      src: ../configs/{{ inventory_hostname }}.save-text.conf
+      src_format: text
+      update: overwrite
+

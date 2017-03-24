@@ -1,0 +1,23 @@
+Some ideas from https://github.com/JNPRAutomate/ansible-junos-examples/
+modified by RomanK.net
+
+
+cd playbook-core
+ansible-playbook -i hosts pb.junos_config.backup.yml
+
+NOTE: 
+to override config one can use the following JunOS CLI command:
+load override  jmv/lab9-start.config
+I should think if I can use it
+
+## OLD
+
+Two playbook types:
+
+1) Ansible core modules (/usr/local/lib/python2.7/dist-packages/ansible/modules/network/junos/)
+cd playbook-core
+ansible-playbook -i hosts pb.facts.get_config_txt.yaml
+
+# 2) Roles from Ansible Galaxy (/etc/ansible/roles)
+cd playbook-galaxy
+ansible-playbook -i hosts pb.get_facts.all.yaml
