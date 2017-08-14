@@ -1,0 +1,136 @@
+set version 17.1R1.8
+set system host-name mxA-2
+set system root-authentication encrypted-password "$6$TysOheif$KWjdq2yZeqKOpGqs6zq27DlKgq7KxVqXQgm2FmFbE4BbwPAziGZqIIqMFnqXQm0YH7BMOhjzBosmTkCAk2zmd1"
+set system login user roman uid 2000
+set system login user roman class super-user
+set system login user roman authentication encrypted-password "$6$WJEi8PqU$fKylR.B9qiL0IO1E3G8nfNuEQbtvo.n8mVe1dQSdmWRdWyHje7zIJfPC2RAydGtnRZNIH9ML8vWl8qRaffdQ01"
+set system login user roman authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAzIBP7+bkQPpmmE1UABvoQyfMuTj2b3PGncfr41s6TPz1pdn0oaqMB34qDEEimP8TBGilpMFZoJVFx7bhJWQq1ua8KKwoxnk9jjdamZi9uGho+vn2TBgnuf2un2XV0wUJp3wfVJSsHR4oYaDIlAG3t5HpJMi8mhNBotk7e4sO+1afw6/4hbufxCZLAMpVczoJrkVGGDv/Ju7AwgVp5g1psOTkoe8W+OXpXv/liBN9pZMw9wefyjPLfaNXbdgiuNFJOhRFZ58rRppkJo0r+vzG0Bi2jc7QbOoGY/OX/OfZBMgRHNBegteWojF4OYGlGpM21mPo7L4GLR+4pl265zM4ww== rsa-key-20160811"
+set system login user roman authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDr1VWi2Gh+E3KOq6VCCchhc9SNnCLp23Orsk9soAtZG54BRHJdAVm4X8sAqlz/3EChHovO/5SRxhcza3cqtJjQVdGjcvLSpTX/EOchCxeATTnxqjtsKpCJ5za7gOxvQjhEnrKecInvg3IzpXpONux20VKTXUzn5nRBaR9mfV7BBwEJuU8U4Ci1QwUBlVTkVQ1Yq37zDhfWKWdhFBE4HBDcTPFk+QQtdbEnOY1dyK3wC91cYum2gZAJ/Q9pUGKNqTIxbf02IZTqVmoB43sd51uNXgyrf6V6fwXzP2Fa6vebS8IIFV0sZxqT8PT8Mk2r9ByaTeYifUB8KI5uvmoiYeMGfS5TaV858JrbN/TMRZp9xLSZuhYe9ZSHF2RcvBEbdgbRAaIoN//w5pt/H8vK0OSx4t/J8hcqsJcRXOmBjc5NPLEPyPZiuqwr8/ph3zXivzSVkQgfaFwtK2uYC0s7S8wK+Ar4Z//Ak8ZM8mzn3lhfdaZvhw2UoB0vO2GkQLFvvQqeqFLZKEP6GiCszfTQ6GnLEUGVj9T3ERPcx3rHN7w+NPV3/fmDSPgYrZqJMx/nkOSLbQvgQyzCljXz//8xdBgxi0LqjwRat8jbmCm/UnBCIPjwXSauDCr6DiiT/gqfTkBRR+UMRtFqoZ0CTcJPVZds2KRI1la/OU47ZjPes9Vqw== romankmail@gmail.com"
+set system login user roman authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDjh3aaDB5ennNgeRCgaCj+xclzWG2Vwh73RumrruTAJXA15Zo77PorKMW/eZRIpvdSeSqFr85ZrqWObhMldPfeQ0IYXOC8tHDT4uiBm2ITsKwOvSQb9B3Q0ycac/+fE75fHmrYm82b2fRa6UYjGnbJhRaigiDV0lZABAmqwtsjPPUZCzlKubf7gIfhgAVJQYEON3JpRRiQtXEnumby5YHSP01cMmRZzHmAY3nul4rchueZ2pvFDHYEl/IQlGWrZnO/LO12ujFcX+oadwLFRKZv9W9xEBzGV9+zyroHVcZ7GaNV+Uk/4c3MJr64i77zdLt3GYC6qrLm1g5n7D9Kwd09 roman@desktop2"
+set system services ftp
+set system services ssh
+set system services telnet
+set system services netconf ssh
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system archival configuration transfer-on-commit
+set system archival configuration archive-sites "ftp://roman:ubuntu@10.128.108.108/juniper/config-backups"
+set chassis fpc 0 pic 0 tunnel-services
+set interfaces lt-0/0/0 unit 104 description "default to R3-2"
+set interfaces lt-0/0/0 unit 104 encapsulation ethernet
+set interfaces lt-0/0/0 unit 104 peer-unit 114
+set interfaces lt-0/0/0 unit 104 family inet address 10.0.14.1/24
+set interfaces lt-0/0/0 unit 114 description "R3-2 to default"
+set interfaces lt-0/0/0 unit 114 encapsulation ethernet
+set interfaces lt-0/0/0 unit 114 peer-unit 104
+set interfaces lt-0/0/0 unit 114 family inet address 10.0.14.2/24
+set interfaces ge-0/0/1 unit 0 family inet address 172.22.122.1/24
+set interfaces ge-0/0/2 unit 0 family inet address 172.22.124.1/24
+set interfaces ge-0/0/3 unit 0 family inet address 172.22.126.1/24
+set interfaces fxp0 unit 0 family inet address 10.128.108.117/27
+set interfaces lo0 unit 0 family inet address 172.16.2.1/32
+set interfaces lo0 unit 1 family inet address 172.16.2.2/32
+set routing-options static route 10.128.8.0/22 next-hop 10.128.108.97
+set routing-options static route 10.128.8.0/22 retain
+set routing-options static route 10.128.8.0/22 no-readvertise
+set routing-options static route 10.128.4.0/22 next-hop 10.128.108.97
+set routing-options static route 10.128.4.0/22 retain
+set routing-options static route 10.128.4.0/22 no-readvertise
+set routing-options static route 10.190.4.0/22 next-hop 10.128.108.97
+set routing-options static route 10.190.4.0/22 retain
+set routing-options static route 10.190.4.0/22 no-readvertise
+set routing-options static route 10.188.4.0/23 next-hop 10.128.108.97
+set routing-options static route 10.188.4.0/23 retain
+set routing-options static route 10.188.4.0/23 no-readvertise
+set routing-options static route 10.188.14.0/23 next-hop 10.128.108.97
+set routing-options static route 10.188.14.0/23 retain
+set routing-options static route 10.188.14.0/23 no-readvertise
+set routing-options static route 10.188.6.0/24 next-hop 10.128.108.97
+set routing-options static route 10.188.6.0/24 retain
+set routing-options static route 10.188.6.0/24 no-readvertise
+set routing-options static route 172.16.2.0/26 reject
+set routing-options static route 172.16.2.64/26 reject
+set routing-options static route 172.22.2.0/24 reject
+set routing-options aggregate route 172.16.2.0/24
+set routing-options autonomous-system 65002
+set protocols bgp damping
+set protocols bgp import modify-damping
+set protocols bgp group ibgp type internal
+set protocols bgp group ibgp local-address 172.16.2.1
+set protocols bgp group ibgp export redistribute-statics
+set protocols bgp group ibgp export next-hop-self
+set protocols bgp group ibgp neighbor 172.16.2.2
+set protocols bgp group P1-P2 type external
+set protocols bgp group P1-P2 export export-aggregate
+set protocols bgp group P1-P2 peer-as 65412
+set protocols bgp group P1-P2 neighbor 172.22.122.2 export export-p1
+set protocols bgp group P1-P2 neighbor 172.22.124.2 export export-p2
+set protocols ospf area 0.0.0.0 interface lo0.0
+set protocols ospf area 0.0.0.0 interface lt-0/0/0.104
+set policy-options policy-statement export-aggregate term 1 from protocol aggregate
+set policy-options policy-statement export-aggregate term 1 from route-filter 172.16.2.0/24 exact
+set policy-options policy-statement export-aggregate term 1 then accept
+set policy-options policy-statement export-aggregate term 2 from route-filter 172.16.2.0/24 longer
+set policy-options policy-statement export-aggregate term 2 then reject
+set policy-options policy-statement export-p1 term 1 from protocol aggregate
+set policy-options policy-statement export-p1 term 1 from route-filter 172.16.2.0/24 exact
+set policy-options policy-statement export-p1 term 1 then community set 65002:100
+set policy-options policy-statement export-p1 term 1 then accept
+set policy-options policy-statement export-p1 term 2 from route-filter 172.16.2.0/24 longer
+set policy-options policy-statement export-p1 term 2 then reject
+set policy-options policy-statement export-p1 term 3 from protocol static
+set policy-options policy-statement export-p1 term 3 from route-filter 172.22.2.0/24 exact
+set policy-options policy-statement export-p1 term 3 then accept
+set policy-options policy-statement export-p2 term 1 from protocol aggregate
+set policy-options policy-statement export-p2 term 1 from route-filter 172.16.2.0/24 exact
+set policy-options policy-statement export-p2 term 1 then community set 65002:120
+set policy-options policy-statement export-p2 term 1 then accept
+set policy-options policy-statement export-p2 term 2 from route-filter 172.16.2.0/24 longer
+set policy-options policy-statement export-p2 term 2 then reject
+set policy-options policy-statement export-p2 term 3 from protocol static
+set policy-options policy-statement export-p2 term 3 from route-filter 172.22.2.0/24 exact
+set policy-options policy-statement export-p2 term 3 then accept
+set policy-options policy-statement modify-damping term 1 from protocol bgp
+set policy-options policy-statement modify-damping term 1 from neighbor 172.22.122.2
+set policy-options policy-statement modify-damping term 1 then damping disable
+set policy-options policy-statement modify-damping term 2 from protocol bgp
+set policy-options policy-statement modify-damping term 2 from neighbor 172.22.124.2
+set policy-options policy-statement modify-damping term 2 then damping aggressive
+set policy-options policy-statement next-hop-self term 1 from protocol bgp
+set policy-options policy-statement next-hop-self term 1 from route-type external
+set policy-options policy-statement next-hop-self term 1 then next-hop self
+set policy-options policy-statement redistribute-statics term 1 from protocol static
+set policy-options policy-statement redistribute-statics term 1 from route-filter 172.16.2.0/24 longer
+set policy-options policy-statement redistribute-statics term 1 then accept
+set policy-options community 65002:100 members 65002:100
+set policy-options community 65002:110 members 65002:110
+set policy-options community 65002:120 members 65002:120
+set policy-options damping disable disable
+set policy-options damping aggressive half-life 10
+set policy-options damping aggressive reuse 500
+set policy-options damping aggressive suppress 1500
+set routing-instances R3-2 instance-type virtual-router
+set routing-instances R3-2 interface lt-0/0/0.114
+set routing-instances R3-2 interface ge-0/0/3.0
+set routing-instances R3-2 interface lo0.1
+set routing-instances R3-2 routing-options static route 172.16.2.128/26 reject
+set routing-instances R3-2 routing-options static route 172.16.2.192/26 reject
+set routing-instances R3-2 routing-options static route 172.31.102.1/32 next-hop 172.22.126.2
+set routing-instances R3-2 routing-options static route 172.31.102.1/32 no-readvertise
+set routing-instances R3-2 routing-options aggregate route 172.16.2.0/24
+set routing-instances R3-2 routing-options autonomous-system 65002
+set routing-instances R3-2 protocols bgp group ibgp type internal
+set routing-instances R3-2 protocols bgp group ibgp local-address 172.16.2.2
+set routing-instances R3-2 protocols bgp group ibgp export redistribute-statics
+set routing-instances R3-2 protocols bgp group ibgp export next-hop-self
+set routing-instances R3-2 protocols bgp group ibgp neighbor 172.16.2.1
+set routing-instances R3-2 protocols bgp group P3 type external
+set routing-instances R3-2 protocols bgp group P3 multihop
+set routing-instances R3-2 protocols bgp group P3 local-address 172.16.2.2
+set routing-instances R3-2 protocols bgp group P3 export export-aggregate
+set routing-instances R3-2 protocols bgp group P3 peer-as 65020
+set routing-instances R3-2 protocols bgp group P3 neighbor 172.31.102.1
+set routing-instances R3-2 protocols ospf area 0.0.0.0 interface lo0.1
+set routing-instances R3-2 protocols ospf area 0.0.0.0 interface lt-0/0/0.114

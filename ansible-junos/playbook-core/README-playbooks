@@ -1,9 +1,13 @@
 Some ideas from https://github.com/JNPRAutomate/ansible-junos-examples/
 modified by RomanK.net
 
-
 cd playbook-core
 ansible-playbook -i hosts pb.junos_config.backup.yml
+
+# in Ansible 2.4 pb.facts doesn't work until set the following environment variable
+export ANSIBLE_HOST_KEY_CHECKING=False
+# http://docs.ansible.com/ansible/intro_getting_started.html
+
 
 NOTE: 
 to override config one can use the following JunOS CLI command:

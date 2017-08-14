@@ -1,3 +1,6 @@
 credentials:
   username: roman
   host: "{{ ansible_host }}"
+  password: junos1
+  port: 830
+  ssh_keyfile: 

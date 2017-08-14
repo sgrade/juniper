@@ -10,15 +10,17 @@
     - ../external_vars.yml
 
   tasks:
-
   - name: Get config in TEXT format
     junos_facts:
-      config: yes
+      gather_subset: config
       config_format: text
-      provider: "{{ credentials }}" 
-    register: result_text
+      provider: "{{ credentials }}"
+    register: result
+
+#  - debug:
+#      var: result.ansible_facts.ansible_net_config
 
   - name: Save config (TEXT format)  in configs/
     copy: 
-      content="{{ result_text.ansible_facts.config }}" 
-      dest=../configs/{{ course_name }}/{{ section_name }}/{{ inventory_hostname }}.{{ filename_modifier | default('') }}.conf
+      content="{{ result.ansible_facts.ansible_net_config }}" 
+      dest="../configs/{{ course_name }}/{{ section_name }}/{{ inventory_hostname }}.{{ filename_modifier | default('') }}.conf"

@@ -1,0 +1,13 @@
+---
+  ## This playbook will query config in text format
+  ## and store it
+  ## Tested with Ansible 2.4
+
+- name: collect default set of facts
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: Get config in TEXT format
+    junos_facts:
