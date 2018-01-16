@@ -45,7 +45,7 @@ def find_config(lab, router):
     # Lab number should be with a leading zero
     if int(lab) < 10:
         lab = str(0) + str(lab)
-    lab_dir = "/home/roman/juniper/config-backups/jncie-sp-bootcamp-12.a/JS-topologies/JNCIE-SP_Bootcamp_12a_L" + lab + "/configset"
+    lab_dir = "/home/roman/JS-topologies/JNCIE-SP_Bootcamp_12a_L" + lab + "/configset"
 
     # Getting all filenames in the lab directory
     dir_list = os.listdir(lab_dir)
