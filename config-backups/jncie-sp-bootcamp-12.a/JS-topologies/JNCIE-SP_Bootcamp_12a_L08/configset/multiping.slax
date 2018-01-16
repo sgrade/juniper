@@ -1,0 +1,55 @@
+version 1.0;
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+
+import "../import/junos.xsl";
+
+var $arguments = {
+    <argument> {
+	<name> "remote-host";
+	<description> "Host name or ip-address to ping";
+    }
+    <argument> {
+	<name> "ttl";
+	<description> "Time to Live";
+    }
+    <argument> {
+	<name> "interface";
+	<description> "Outgoing interface for multicast ping";
+}
+    <argument> {
+	<name> "source";
+	<description> "Source address of ping";
+}
+}
+
+param $remote-host;
+param $ttl = 10;
+param $interface;
+param $source;
+
+match / {
+
+    call ping($remote-host, $ttl,$interface,$source);
+
+}
+template ping ($remote-host, $ttl, $interface,$source) {
+
+	var $ping-rpc = {
+	    <ping> {
+		<host> $remote-host;
+		<ttl> $ttl;
+		<count> 5;
+		<interface> $interface;
+                <source> $source;
+                <routing-instance> $routing-instance;
+	    }
+	}
+	var $ping-out = jcs:invoke($ping-rpc);
+	if ($ping-out/ping-success) {
+	    expr jcs:output("Ping Success!!!");
+	} else {
+	    expr jcs:output("Ping Failed!!!");
+	}
+}

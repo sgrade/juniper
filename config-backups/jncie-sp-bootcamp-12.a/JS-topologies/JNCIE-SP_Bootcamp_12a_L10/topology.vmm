@@ -1,0 +1,95 @@
+// Do not delete this line
+#include "common.defs"
+
+config "jncie-sp" {
+
+
+
+vm "R1" {
+ hostname "R1" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private0"; }; // Peer router .29
+ interface "em2" { bridge "private1"; }; // CE3 L3vpn .33 
+ interface "em3" { bridge "private2"; }; // R2 .1
+ interface "em4" { bridge "private3"; }; // R4 AE .10
+ interface "em5" { bridge "private4"; }; // R4 AE .10
+ interface "em6" { bridge "private5"; }; //R3 .14
+ interface "em7" { bridge "private19"; }; // shared lan for all devices
+ install "ENV(HOME)/active/configset/R1-lab6-start.config" "/root/junos.conf";
+};
+
+vm "R2" {
+ hostname "R2" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private2"; }; //R1 .2
+ interface "em2" { bridge "private6"; }; //Transit .37
+ interface "em3" { bridge "private7"; }; // VPLS CE1
+ interface "em4" { bridge "private8"; }; // R4 .6
+ interface "em5" { bridge "private19"; }; // shared lan for all devices
+ install "ENV(HOME)/active/configset/R2-lab6-start.config" "/root/junos.conf";
+};
+
+vm "R3" {
+ hostname "R3" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private5"; }; //R1 .13
+ interface "em2" { bridge "private9"; }; //R4 .19
+ interface "em3" { bridge "private10"; }; //R5 .26
+ interface "em4" { bridge "private11"; }; //Customer router .57
+ interface "em5" { bridge "private19"; }; // shared lan for all devices
+ install "ENV(HOME)/active/configset/R3-lab6-start.config" "/root/junos.conf";
+};
+
+vm "R4" {
+ hostname "R4" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private8"; }; //R2 .6
+ interface "em2" { bridge "private12"; }; //VPLS CE1 
+ interface "em3" { bridge "private13"; }; //L3 VPN CE2 .41
+ interface "em4" { bridge "private14"; }; //R5 .21
+ interface "em5" { bridge "private9"; }; //R3 .18
+ interface "em6" { bridge "private3"; }; //R1 AE .9
+ interface "em7" { bridge "private4"; }; //R1 AE .9
+ interface "em8" { bridge "private19"; }; // shared lan for all devices
+ install "ENV(HOME)/active/configset/R4-lab6-start.config" "/root/junos.conf";
+};
+
+vm "R5" {
+ hostname "R5" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private10"; }; //R3 .25
+ interface "em2" { bridge "private14"; }; //R4 .22
+ interface "em3" { bridge "private15"; }; //L3 VPN CE1 .45
+ interface "em4" { bridge "private16"; }; //Customer .49
+ interface "em5" { bridge "private17"; }; //VPLS CE2
+ interface "em6" { bridge "private19"; }; // shared lan for all devices
+ install "ENV(HOME)/active/configset/R5-lab6-start.config" "/root/junos.conf";
+};
+
+vm "vrdevice" {
+ hostname "vrdevice" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private0"; }; //Peer router to R1 .30
+ interface "em2" { bridge "private1"; }; //CE3 router to R1 .34
+ interface "em3" { bridge "private6"; }; //Transit to R2 .38
+ interface "em4" { bridge "private7"; }; //VPLS CE1 to R2 
+ interface "em5" { bridge "private11"; }; //Customer router to R3 .58
+ interface "em6" { bridge "private12"; }; //VPLS CE1 to R4 
+ interface "em7" { bridge "private13"; }; //CE2 L3VPN to R4 .42
+ interface "em8" { bridge "private15"; }; //C1 L3VPN to R5 .46
+ interface "em9" { bridge "private16"; }; //Customer router to R5 .50
+ interface "em10" { bridge "private17"; }; //VPLS CE2 to R5
+ interface "em11" { bridge "private18"; }; // CE1 to CE2 in AS65100
+ interface "em12" { bridge "private18"; }; // CE1 to CE2 in AS65100
+ interface "em13" { bridge "private19"; }; // shared lan for all devices
+ install "ENV(HOME)/active/configset/VR-lab6-start.config" "/root/junos.conf";
+};
+// The system needs these lines. DO NOT CHANGE
+PRIVATE_BRIDGES
+};

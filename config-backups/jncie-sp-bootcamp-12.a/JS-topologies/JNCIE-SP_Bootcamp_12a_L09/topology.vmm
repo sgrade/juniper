@@ -1,0 +1,89 @@
+// Do not delete this line
+#include "common.defs"
+
+config "jncie-sp-lab9" {
+
+
+
+vm "R1" {
+ hostname "R1" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private0"; }; // Peer router .29
+ interface "em2" { bridge "dead"; }; 
+ interface "em3" { bridge "private2"; };
+ interface "em4" { bridge "dead"; }; 
+ interface "em5" { bridge "dead"; };
+ interface "em6" { bridge "private5"; }; //R3 .14
+ install "ENV(HOME)/active/configset/R1.config" "/root/junos.conf";
+};
+
+vm "R2" {
+ hostname "R2" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private2"; }; //R1 .2
+ interface "em2" { bridge "dead"; }; 
+ interface "em3" { bridge "private7"; }; // VPLS CE1
+ interface "em4" { bridge "private8"; }; // R4 .6
+ install "ENV(HOME)/active/configset/R2.config" "/root/junos.conf";
+};
+
+vm "R3" {
+ hostname "R3" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private5"; }; //R1 .13
+ interface "em2" { bridge "private9"; }; //R4 .19
+ interface "em3" { bridge "private10"; }; //R5 .26
+ interface "em4" { bridge "dead"; };
+ install "ENV(HOME)/active/configset/R3.config" "/root/junos.conf";
+};
+
+vm "R4" {
+ hostname "R4" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private8"; }; //R2 .6
+ interface "em2" { bridge "dead"; };
+ interface "em3" { bridge "dead"; };
+ interface "em4" { bridge "private14"; }; //R5 .21
+ interface "em5" { bridge "private9"; }; //R3 .18
+ interface "em6" { bridge "dead"; }; 
+ interface "em7" { bridge "dead"; };
+ install "ENV(HOME)/active/configset/R4.config" "/root/junos.conf";
+};
+
+vm "R5" {
+ hostname "R5" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private10"; }; //R3 .25
+ interface "em2" { bridge "private14"; }; //R4 .22
+ interface "em3" { bridge "dead"; };
+ interface "em4" { bridge "private16"; }; //Customer .49
+ interface "em5" { bridge "private17"; }; //VPLS CE2
+ install "ENV(HOME)/active/configset/R5.config" "/root/junos.conf";
+};
+
+vm "vrdevice" {
+ hostname "vrdevice" ;
+ VJX1000_14_1
+ interface "em0" { EXTERNAL; };
+ interface "em1" { bridge "private0"; }; //Peer router to R1 .30
+ interface "em2" { bridge "dead"; };
+ interface "em3" { bridge "dead"; }; 
+ interface "em4" { bridge "private7"; }; //VPLS CE1 to R2 
+ interface "em5" { bridge "dead"; };
+ interface "em6" { bridge "dead"; }; 
+ interface "em7" { bridge "dead"; }; 
+ interface "em8" { bridge "dead"; };
+ interface "em9" { bridge "private16"; }; //Customer router to R5 .50
+ interface "em10" { bridge "private17"; }; //VPLS CE2 to R5
+ interface "em11" { bridge "dead"; }; 
+ interface "em12" { bridge "dead"; }; 
+ install "ENV(HOME)/active/configset/vrdevice.config" "/root/junos.conf";
+};
+// The system needs these lines. DO NOT CHANGE
+PRIVATE_BRIDGES
+};
