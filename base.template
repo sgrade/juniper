@@ -30,6 +30,13 @@ system {
         }
     }                                   
 }
+chassis {
+    fpc 0 {
+        pic 0 {
+            number-of-ports 13;
+        }
+    }
+}
 interfaces {
     fxp0 {
         unit 0 {
