@@ -35,6 +35,7 @@ chassis {
         pic 0 {
             number-of-ports 13;
         }
+        flexible-queuing-mode;
     }
 }
 interfaces {
