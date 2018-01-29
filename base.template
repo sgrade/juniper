@@ -46,4 +46,13 @@ interfaces {
         }
     }
 }
+protocols {
+    ospf {
+        area 0.0.0.0 {
+            interface fxp0.0 {
+                disable;
+            }
+        }
+    }
+}
 
