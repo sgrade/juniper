@@ -1,0 +1,110 @@
+set version 17.2R1.13
+set system host-name mxA-1
+set system root-authentication encrypted-password "$6$XJOUSUFv$A5RRO3nelVjRYmOYrvxv5VKZnVAh8OstVFHJUoW/Xf0K1hSFRjtvmIkN1ga3k6CPyd8LAq5GSPiFO9XRgzNFr1"
+set system login user roman uid 2000
+set system login user roman class super-user
+set system login user roman authentication encrypted-password "$6$hFMkzXRO$3CJZ0vBA/rekb7xeiAkj1bJW5S/.W54yqVJMfvepZANw3SZ6.6A4qn4zuM315UYUCcMQb7vpZUxxcA6wY6m7H."
+set system login user roman authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAzIBP7+bkQPpmmE1UABvoQyfMuTj2b3PGncfr41s6TPz1pdn0oaqMB34qDEEimP8TBGilpMFZoJVFx7bhJWQq1ua8KKwoxnk9jjdamZi9uGho+vn2TBgnuf2un2XV0wUJp3wfVJSsHR4oYaDIlAG3t5HpJMi8mhNBotk7e4sO+1afw6/4hbufxCZLAMpVczoJrkVGGDv/Ju7AwgVp5g1psOTkoe8W+OXpXv/liBN9pZMw9wefyjPLfaNXbdgiuNFJOhRFZ58rRppkJo0r+vzG0Bi2jc7QbOoGY/OX/OfZBMgRHNBegteWojF4OYGlGpM21mPo7L4GLR+4pl265zM4ww== rsa-key-20160811"
+set system login user roman authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDr1VWi2Gh+E3KOq6VCCchhc9SNnCLp23Orsk9soAtZG54BRHJdAVm4X8sAqlz/3EChHovO/5SRxhcza3cqtJjQVdGjcvLSpTX/EOchCxeATTnxqjtsKpCJ5za7gOxvQjhEnrKecInvg3IzpXpONux20VKTXUzn5nRBaR9mfV7BBwEJuU8U4Ci1QwUBlVTkVQ1Yq37zDhfWKWdhFBE4HBDcTPFk+QQtdbEnOY1dyK3wC91cYum2gZAJ/Q9pUGKNqTIxbf02IZTqVmoB43sd51uNXgyrf6V6fwXzP2Fa6vebS8IIFV0sZxqT8PT8Mk2r9ByaTeYifUB8KI5uvmoiYeMGfS5TaV858JrbN/TMRZp9xLSZuhYe9ZSHF2RcvBEbdgbRAaIoN//w5pt/H8vK0OSx4t/J8hcqsJcRXOmBjc5NPLEPyPZiuqwr8/ph3zXivzSVkQgfaFwtK2uYC0s7S8wK+Ar4Z//Ak8ZM8mzn3lhfdaZvhw2UoB0vO2GkQLFvvQqeqFLZKEP6GiCszfTQ6GnLEUGVj9T3ERPcx3rHN7w+NPV3/fmDSPgYrZqJMx/nkOSLbQvgQyzCljXz//8xdBgxi0LqjwRat8jbmCm/UnBCIPjwXSauDCr6DiiT/gqfTkBRR+UMRtFqoZ0CTcJPVZds2KRI1la/OU47ZjPes9Vqw== romankmail@gmail.com"
+set system login user roman authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDjh3aaDB5ennNgeRCgaCj+xclzWG2Vwh73RumrruTAJXA15Zo77PorKMW/eZRIpvdSeSqFr85ZrqWObhMldPfeQ0IYXOC8tHDT4uiBm2ITsKwOvSQb9B3Q0ycac/+fE75fHmrYm82b2fRa6UYjGnbJhRaigiDV0lZABAmqwtsjPPUZCzlKubf7gIfhgAVJQYEON3JpRRiQtXEnumby5YHSP01cMmRZzHmAY3nul4rchueZ2pvFDHYEl/IQlGWrZnO/LO12ujFcX+oadwLFRKZv9W9xEBzGV9+zyroHVcZ7GaNV+Uk/4c3MJr64i77zdLt3GYC6qrLm1g5n7D9Kwd09 roman@desktop2"
+set system services ssh
+set system services netconf ssh
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system archival configuration transfer-on-commit
+set system archival configuration archive-sites "ftp://roman:ubuntu@10.128.108.108/juniper/config-backups"
+set system processes dhcp-service traceoptions file dhcp_logfile
+set system processes dhcp-service traceoptions file size 10m
+set system processes dhcp-service traceoptions level all
+set system processes dhcp-service traceoptions flag all
+set logical-systems C1 interfaces lt-0/0/0 unit 114 description "C1 to R1"
+set logical-systems C1 interfaces lt-0/0/0 unit 114 encapsulation ethernet
+set logical-systems C1 interfaces lt-0/0/0 unit 114 peer-unit 104
+set logical-systems C1 interfaces lt-0/0/0 unit 114 family inet address 10.1.0.1/30
+set logical-systems C1 routing-options static route 10.1.0.0/16 reject
+set logical-systems C1 routing-options static route 0.0.0.0/0 next-hop 10.1.0.2
+set logical-systems C1 routing-options static route 0.0.0.0/0 no-readvertise
+set logical-systems R1 interfaces lt-0/0/0 unit 104 description "R1 to C1"
+set logical-systems R1 interfaces lt-0/0/0 unit 104 encapsulation ethernet
+set logical-systems R1 interfaces lt-0/0/0 unit 104 peer-unit 114
+set logical-systems R1 interfaces lt-0/0/0 unit 104 family inet address 10.1.0.2/30
+set logical-systems R1 interfaces lt-0/0/0 unit 105 description "R1 to R2"
+set logical-systems R1 interfaces lt-0/0/0 unit 105 encapsulation ethernet
+set logical-systems R1 interfaces lt-0/0/0 unit 105 peer-unit 115
+set logical-systems R1 interfaces lt-0/0/0 unit 105 family inet address 172.17.23.1/30
+set logical-systems R1 interfaces lt-0/0/0 unit 105 family iso
+set logical-systems R1 interfaces lt-0/0/0 unit 106 description "R1 to R3"
+set logical-systems R1 interfaces lt-0/0/0 unit 106 encapsulation ethernet
+set logical-systems R1 interfaces lt-0/0/0 unit 106 peer-unit 116
+set logical-systems R1 interfaces lt-0/0/0 unit 106 family inet address 172.17.23.5/30
+set logical-systems R1 interfaces lt-0/0/0 unit 106 family iso
+set logical-systems R1 interfaces lo0 unit 1 family inet address 172.17.20.1/32
+set logical-systems R1 interfaces lo0 unit 1 family iso address 49.4510.1720.1702.0001.00
+set logical-systems R1 protocols isis level 1 disable
+set logical-systems R1 protocols isis interface lt-0/0/0.104 passive
+set logical-systems R1 protocols isis interface lt-0/0/0.105 point-to-point
+set logical-systems R1 protocols isis interface lt-0/0/0.106 point-to-point
+set logical-systems R1 protocols isis interface lo0.1
+set logical-systems R2 interfaces lt-0/0/0 unit 115 description "R2 to R1"
+set logical-systems R2 interfaces lt-0/0/0 unit 115 encapsulation ethernet
+set logical-systems R2 interfaces lt-0/0/0 unit 115 peer-unit 105
+set logical-systems R2 interfaces lt-0/0/0 unit 115 family inet address 172.17.23.2/30
+set logical-systems R2 interfaces lt-0/0/0 unit 115 family iso
+set logical-systems R2 interfaces lt-0/0/0 unit 117 description "R2 to R3"
+set logical-systems R2 interfaces lt-0/0/0 unit 117 encapsulation ethernet
+set logical-systems R2 interfaces lt-0/0/0 unit 117 peer-unit 107
+set logical-systems R2 interfaces lt-0/0/0 unit 117 family inet address 172.17.23.9/30
+set logical-systems R2 interfaces lt-0/0/0 unit 117 family iso
+set logical-systems R2 interfaces ge-0/0/2 unit 0 description "R2 to R4"
+set logical-systems R2 interfaces ge-0/0/2 unit 0 family inet address 172.17.23.13/30
+set logical-systems R2 interfaces ge-0/0/2 unit 0 family iso
+set logical-systems R2 interfaces lo0 unit 2 family inet address 172.17.20.2/32
+set logical-systems R2 interfaces lo0 unit 2 family iso address 49.4510.1720.1702.0002.00
+set logical-systems R2 protocols isis level 1 disable
+set logical-systems R2 protocols isis interface lt-0/0/0.115 point-to-point
+set logical-systems R2 protocols isis interface lt-0/0/0.117 point-to-point
+set logical-systems R2 protocols isis interface ge-0/0/2.0 point-to-point
+set logical-systems R2 protocols isis interface lo0.2
+set logical-systems R3 interfaces lt-0/0/0 unit 107 description "R3 to R2"
+set logical-systems R3 interfaces lt-0/0/0 unit 107 encapsulation ethernet
+set logical-systems R3 interfaces lt-0/0/0 unit 107 peer-unit 117
+set logical-systems R3 interfaces lt-0/0/0 unit 107 family inet address 172.17.23.10/30
+set logical-systems R3 interfaces lt-0/0/0 unit 107 family iso
+set logical-systems R3 interfaces lt-0/0/0 unit 116 description "R3 to R1"
+set logical-systems R3 interfaces lt-0/0/0 unit 116 encapsulation ethernet
+set logical-systems R3 interfaces lt-0/0/0 unit 116 peer-unit 106
+set logical-systems R3 interfaces lt-0/0/0 unit 116 family inet address 172.17.23.6/30
+set logical-systems R3 interfaces lt-0/0/0 unit 116 family iso
+set logical-systems R3 interfaces ge-0/0/3 unit 0 description "R3 to R5"
+set logical-systems R3 interfaces ge-0/0/3 unit 0 family inet address 172.17.23.17/30
+set logical-systems R3 interfaces ge-0/0/3 unit 0 family iso
+set logical-systems R3 interfaces lo0 unit 3 family inet address 172.17.20.3/32
+set logical-systems R3 interfaces lo0 unit 3 family iso address 49.4510.1720.1702.0003.00
+set logical-systems R3 protocols isis level 1 disable
+set logical-systems R3 protocols isis interface lt-0/0/0.107 point-to-point
+set logical-systems R3 protocols isis interface lt-0/0/0.116 point-to-point
+set logical-systems R3 protocols isis interface ge-0/0/3.0 point-to-point
+set logical-systems R3 protocols isis interface ge-0/0/3.0 level 2 metric 11
+set logical-systems R3 protocols isis interface lo0.3
+set chassis fpc 0 pic 0 tunnel-services
+set interfaces fxp0 unit 0 family inet address 10.128.108.106/27
+set routing-options static route 10.128.8.0/22 next-hop 10.128.108.97
+set routing-options static route 10.128.8.0/22 retain
+set routing-options static route 10.128.8.0/22 no-readvertise
+set routing-options static route 10.128.4.0/22 next-hop 10.128.108.97
+set routing-options static route 10.128.4.0/22 retain
+set routing-options static route 10.128.4.0/22 no-readvertise
+set routing-options static route 10.190.4.0/22 next-hop 10.128.108.97
+set routing-options static route 10.190.4.0/22 retain
+set routing-options static route 10.190.4.0/22 no-readvertise
+set routing-options static route 10.188.4.0/23 next-hop 10.128.108.97
+set routing-options static route 10.188.4.0/23 retain
+set routing-options static route 10.188.4.0/23 no-readvertise
+set routing-options static route 10.188.14.0/23 next-hop 10.128.108.97
+set routing-options static route 10.188.14.0/23 retain
+set routing-options static route 10.188.14.0/23 no-readvertise
+set routing-options static route 10.188.6.0/24 next-hop 10.128.108.97
+set routing-options static route 10.188.6.0/24 retain
+set routing-options static route 10.188.6.0/24 no-readvertise
