@@ -1,2 +1,1 @@
-Test scripts for Juniper automation
-
+Artefacts for Juniper automation
