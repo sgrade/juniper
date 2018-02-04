@@ -6,9 +6,13 @@ import os
 
 
 def config_replace(device_ip, config_file, base_config):
-    """Load a config for the device."""
-
-    work_dir = os.getcwd()
+    """
+    Uses NAPALM to replace device config with lab config and base config
+    :param device_ip: management IP (fxp0.0)
+    :param config_file: lab config (e.g. provided with JNCIE bootcamp course)
+    :param base_config: specific parameters to complement the lab config
+    :return: None
+    """
 
 
     if not (os.path.exists(config_file) and os.path.isfile(config_file)):

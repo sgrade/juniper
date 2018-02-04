@@ -1,1 +1,1 @@
-Artefacts for Juniper automation
+Juniper automation

@@ -7,6 +7,12 @@ import os
 
 
 def address_replace(ip_address):
+    """
+    Creates base device config from base template:
+    replaces the IP_ADDR in the template with the device's IP address
+    :param ip_address: device IP
+    :return: base config file name
+    """
 
     work_dir = os.getcwd()
     base_template = work_dir+'/parser_configs/base.template'

@@ -11,7 +11,12 @@ work_dir = os.getcwd()
 
 
 def parser(lab_num):
-
+    """
+    Parser will replace devices' configs with the ones from some directory (e.g. provided with JNCIE bootcamp course).
+    In addition, it will add base configuration, specific to your lab (SSH keys, etc.)
+    :param lab_num:
+    :return: None
+    """
     address_config = parse_ip_addresses(work_dir+'/parser_configs/ip-addresses.yml')
 
     for router, ip in address_config.items():
@@ -41,15 +46,16 @@ def parse_ip_addresses(file):
 
 def find_config(lab, router):
     """
-    Looking for the router's config in the lab directory
+    Gets router config in the lab directory
     :rtype: string
     """
 
-    # Lab number should be with a leading zero
+    # Adds leading zero to lab number
     global lab_dir
     if int(lab) < 10:
         lab = str(0) + str(lab)
 
+    # Creates full path from configuration in parser.yml
     parser_config = work_dir + '/parser_configs/parser.yml'
     with open(parser_config) as ymlfile:
         parser_cfg = yaml.load(ymlfile)
@@ -84,5 +90,3 @@ if __name__ == '__main__':
         sys.exit(1)
     lab_number = sys.argv[1]
     parser(lab_number)
-
-
