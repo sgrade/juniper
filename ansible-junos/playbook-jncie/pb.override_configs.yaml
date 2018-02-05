@@ -1,0 +1,31 @@
+- name: Merge base configs
+  hosts: jncie-lab
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+
+  tasks:
+    - name: "Load base configs (override existing configuration)"
+      juniper_junos_config:
+        config_mode: 'private'
+        load: 'override'
+        format: "text"
+        template: "base_template.j2"
+        vars:
+          host_ip: "{{ host.management.ip }}"
+      register: response
+    - name: Print the config changes.
+      debug:
+        var: response.diff_lines
+
+    - name: "Load lab configs (merge with base config)"
+      juniper_junos_config:
+        config_mode: 'private'
+        load: 'merge'
+        src: "~/JS-topologies/JNCIE-SP_Bootcamp_12a_L09/configset/{{ inventory_hostname }}.config"
+        format: "text"
+      register: response
+    - name: Print the config changes.
+      debug:
+        var: response.diff_lines
