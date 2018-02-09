@@ -23,7 +23,7 @@
       juniper_junos_config:
         config_mode: 'private'
         load: 'merge'
-        src: "~/JS-topologies/JNCIE-SP_Bootcamp_12a_L09/configset/{{ inventory_hostname }}.config"
+        src: "{{ lab_configs.lab_config_dir }}/{{ lab_configs.subdirectory_prefix }}{{ lab }}/{{ lab_configs.configdir_in_subdirectory }}/{{ inventory_hostname }}.config"
         format: "text"
       register: response
     - name: Print the config changes.

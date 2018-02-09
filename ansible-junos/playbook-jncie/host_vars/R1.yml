@@ -1,0 +1,4 @@
+host:
+  management:
+    ip: 172.16.30.201
+    
