@@ -3,7 +3,8 @@ About
 
 Parser will replace devices' configs with the ones from some directory (e.g. provided with JNCIE bootcamp course). 
 In addition, it will add base configuration, specific to your lab (SSH keys, etc.)
- 
+
+Note: the configs themselves are not provided here
 
 
 Configuration
