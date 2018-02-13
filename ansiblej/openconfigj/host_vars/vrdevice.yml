@@ -1,0 +1,19 @@
+host:
+  name: vrdevice
+  vendor: juniper
+  type: router
+  model: vMX
+  management:
+    ip: 172.16.30.209
+  openconfig_bgp_bgp:
+    neighbors:
+      neighbor:
+        neighbor_address: 172.17.1.2
+        config:
+          peer-group: ext-peers
+          peer-as: 65513
+  telemetry:
+    port: 50051
+  notification:
+    allow_clients:
+      address: 0.0.0.0/0

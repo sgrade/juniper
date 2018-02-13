@@ -1,0 +1,15 @@
+---
+# https://forums.juniper.net/t5/tkb/articleprintpage/tkb-id/Automation_Scripting/article-id/631
+- name: Telemetry config
+  juniper_junos_config:
+    load: 'merge'
+    config_mode: 'private'
+    format: 'text'
+    template: 'roles/telemetry/templates/telemetry.j2'
+    vars:
+      telemetry_port: "{{ host.telemetry.port }}"
+      notification_address: "{{ host.notification.allow_clients.address }}"
+  register: response
+- name: Print the response
+  debug:
+    var: response

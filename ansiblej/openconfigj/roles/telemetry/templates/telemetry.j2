@@ -1,0 +1,19 @@
+system {
+    services {
+        extension-service {
+            request-response {
+                grpc {
+                    clear-text {
+                        port {{ telemetry_port }};
+                    }
+                    skip-authentication;
+                }
+            }
+            notification {
+                allow-clients {
+                    address {{ notification_address }};
+                }
+            }
+        }
+    }
+}

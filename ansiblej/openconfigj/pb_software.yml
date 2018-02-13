@@ -1,0 +1,7 @@
+- name: Install openconfig package
+  hosts: vrdevice
+  connection: local
+  gather_facts: no
+  roles:
+    - openconfig-software
+      

@@ -1,0 +1,20 @@
+---
+- name: Install junos-openconfig-x86 software
+  juniper_junos_software:
+    local_package: "files/junos-openconfig-x86-32-0.0.0.8.tgz"
+    reboot: no
+  register: response
+
+- name: Print the complete response for openconfig install
+  debug:
+    var: response
+
+- name: Install network-agent-x86 software
+  juniper_junos_software:
+    local_package: "files/network-agent-x86-32-17.4R1.16-C1.tgz"
+    reboot: no
+  register: response
+
+- name: Print the complete response for network-agent install
+  debug:
+    var: response

@@ -1,0 +1,7 @@
+---
+- name: Push OpenConfig config
+  hosts: openconfig-enabled
+  connection: local
+  gather_facts: no
+  roles:
+    - telemetry

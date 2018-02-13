@@ -1,0 +1,14 @@
+---
+- name: BGP example based on JAUT-V-17a openconfig config
+  juniper_junos_config:
+    load: 'merge'
+    config_mode: 'private'
+    format: 'text'
+    template: 'roles/openconfig-bgp/templates/openconfig.bgp.j2'
+    vars:
+      host_ip: "{{ host.management.ip }}"
+      openconfig_neighbor_ip: "{{ host.openconfig_bgp_bgp.neighbors.neighbor.neighbor_address }}"
+  register: response
+- name: Print the complete response.
+  debug:
+    var: response
