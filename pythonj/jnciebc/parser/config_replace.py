@@ -31,11 +31,13 @@ def config_replace(device_ip, config_file, base_config):
     print('Opening device ...')
     device.open()
 
-    print('Loading lab config ...')
-    device.load_replace_candidate(filename=config_file)
+    print('Loading base config: ', base_config)
+    device.load_replace_candidate(filename=base_config)
+    print('Committing ...')
+    device.commit_config()
 
-    print('Loading base config ...')
-    device.load_merge_candidate(filename=base_config)
+    print('Loading lab config: ', config_file)
+    device.load_merge_candidate(filename=config_file)
 
     # Note that the changes have not been applied yet. Before applying
     # the configuration you can check the changes:

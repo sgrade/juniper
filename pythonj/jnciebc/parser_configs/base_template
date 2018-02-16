@@ -33,7 +33,7 @@ system {
 chassis {
     fpc 0 {
         pic 0 {
-            number-of-ports 13;
+            number-of-ports 14;
         }
         flexible-queuing-mode;
     }

@@ -15,7 +15,7 @@ def address_replace(ip_address):
     """
 
     work_dir = os.getcwd()
-    base_template = work_dir+'/parser_configs/base.template'
+    base_template = work_dir+'/parser_configs/base_template'
 
     # copy essential template to a tmp directory
     print('Filling template with the IP address:', ip_address)
