@@ -32,3 +32,4 @@ For example, if device configs for lab 10 are in
 "~/JS-topologies/JNCIE-SP_Bootcamp_12a_L10"
 You should run parser as 
 python parser/parser.py 10
+

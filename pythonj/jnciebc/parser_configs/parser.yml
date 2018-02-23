@@ -1,4 +1,0 @@
-# For example, lab configs for lab 9 are located in /home/roman/JS-topologies/JNCIE-SP_Bootcamp_12a_L9/configset/
-lab_config_dir: /home/roman/JS-topologies
-subdirectory_prefix: JNCIE-SP_Bootcamp_12a_L
-configdir_in_subdirectory: configset
