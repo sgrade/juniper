@@ -1,0 +1,1761 @@
+
+
+Thu Feb 22 18:33:28 2018
+Command line: TestDisk
+
+TestDisk 7.0, Data Recovery Utility, April 2015
+Christophe GRENIER <grenier@cgsecurity.org>
+http://www.cgsecurity.org
+OS: Linux, kernel 4.13.0-32-generic (#35~16.04.1-Ubuntu SMP Thu Jan 25 10:13:43 UTC 2018) x86_64
+Compiler: GCC 5.3
+ext2fs lib: 1.42.13, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.0
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+Hard disk list
+Disk /dev/sda - 128 GB / 120 GiB - CHS 15665 255 63, sector size=512 - VMware, VMware Virtual S, FW:1.0
+
+Partition table type (auto): Intel
+Disk /dev/sda - 128 GB / 120 GiB - VMware, VMware Virtual S
+Partition table type: Intel
+
+Analyse Disk /dev/sda - 128 GB / 120 GiB - CHS 15665 255 63
+Geometry from i386 MBR: head=255 sector=63
+Current partition structure:
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+ 2 E extended             14620 202 45 15664 222 46   16773122
+ 5 L Linux Swap           14620 202 47 15664 222 46   16773120
+
+search_part()
+Disk /dev/sda - 128 GB / 120 GiB - CHS 15665 255 63
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux Swap           14620 202 47 15664 222 30   16773104
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8189 MiB
+
+Results
+   * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+   P Linux Swap           14620 202 47 15664 222 46   16773120
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8190 MiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 234878976 linear /dev/sda 2048" | dmsetup create test0
+echo "0 16773120 linear /dev/sda 234883072" | dmsetup create test1
+
+interface_write()
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+ 2 P Linux Swap           14620 202 47 15664 222 46   16773120
+
+search_part()
+Disk /dev/sda - 128 GB / 120 GiB - CHS 15665 255 63
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+
+block_group_nr 1
+
+recover_EXT2: "e2fsck -b 32768 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=1/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 3
+
+recover_EXT2: "e2fsck -b 98304 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=3/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 5
+
+recover_EXT2: "e2fsck -b 163840 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=5/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 7
+
+recover_EXT2: "e2fsck -b 229376 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=7/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 9
+
+recover_EXT2: "e2fsck -b 294912 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=9/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 25
+
+recover_EXT2: "e2fsck -b 819200 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=25/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 27
+
+recover_EXT2: "e2fsck -b 884736 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=27/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 49
+
+recover_EXT2: "e2fsck -b 1605632 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=49/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 81
+
+recover_EXT2: "e2fsck -b 2654208 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=81/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 125
+
+recover_EXT2: "e2fsck -b 4096000 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=125/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+     Linux Swap           14620 202 47 15664 222 30   16773104
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8189 MiB
+Search for partition aborted
+
+Results
+   * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+   P Linux Swap           14620 202 47 15664 222 46   16773120
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8190 MiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 234878976 linear /dev/sda 2048" | dmsetup create test0
+echo "0 16773120 linear /dev/sda 234883072" | dmsetup create test1
+
+interface_write()
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+ 2 P Linux Swap           14620 202 47 15664 222 46   16773120
+simulate write!
+
+write_mbr_i386: starting...
+write_all_log_i386: starting...
+No extended partition
+
+Interface Advanced
+Geometry from i386 MBR: head=255 sector=63
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+ 2 E extended             14620 202 45 15664 222 46   16773122
+ 5 L Linux Swap           14620 202 47 15664 222 46   16773120
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8190 MiB
+search_superblock
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 2 (block=0, blocksize=4096)
+
+block_group_nr 1
+
+recover_EXT2: "e2fsck -b 32768 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=1/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 262144 (block=32768, blocksize=4096)
+
+block_group_nr 3
+
+recover_EXT2: "e2fsck -b 98304 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=3/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 786432 (block=98304, blocksize=4096)
+
+block_group_nr 5
+
+recover_EXT2: "e2fsck -b 163840 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=5/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 1310720 (block=163840, blocksize=4096)
+
+block_group_nr 7
+
+recover_EXT2: "e2fsck -b 229376 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=7/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 1835008 (block=229376, blocksize=4096)
+
+block_group_nr 9
+
+recover_EXT2: "e2fsck -b 294912 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=9/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 2359296 (block=294912, blocksize=4096)
+
+block_group_nr 25
+
+recover_EXT2: "e2fsck -b 819200 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=25/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 6553600 (block=819200, blocksize=4096)
+
+block_group_nr 27
+
+recover_EXT2: "e2fsck -b 884736 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=27/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 7077888 (block=884736, blocksize=4096)
+
+block_group_nr 49
+
+recover_EXT2: "e2fsck -b 1605632 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=49/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 12845056 (block=1605632, blocksize=4096)
+
+block_group_nr 81
+
+recover_EXT2: "e2fsck -b 2654208 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=81/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+Ext2 superblock found at sector 21233664 (block=2654208, blocksize=4096)
+  Linux                    0  32 33 14620 170 14  234878976
+superblock 0, blocksize=4096 []
+superblock 32768, blocksize=4096 []
+superblock 98304, blocksize=4096 []
+superblock 163840, blocksize=4096 []
+superblock 229376, blocksize=4096 []
+superblock 294912, blocksize=4096 []
+superblock 819200, blocksize=4096 []
+superblock 884736, blocksize=4096 []
+superblock 1605632, blocksize=4096 []
+superblock 2654208, blocksize=4096 []
+
+To repair the filesystem using alternate superblock, run
+fsck.ext4 -p -b superblock -B blocksize device
+
+
+dir_partition inode=2
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+      11 drwx------     0      0     16384  5-Nov-2017 19:27 lost+found
+ 1835009 drwxr-xr-x     0      0     12288 15-Feb-2018 16:35 etc
+ 1048577 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 media
+ 3145729 drwxr-xr-x     0      0      4096 15-Feb-2018 11:25 bin
+ 6029313 drwxr-xr-x     0      0      4096 15-Feb-2018 10:53 boot
+ 4718593 drwxr-xr-x     0      0      4096  1-Aug-2017 14:28 dev
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 home
+ 6291457 drwxr-xr-x     0      0      4096 22-Nov-2017 16:17 lib
+ 4849665 drwxr-xr-x     0      0      4096 17-Jan-2018 15:02 lib64
+ 1179649 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 mnt
+ 2621441 drwxr-xr-x     0      0      4096  5-Feb-2018 11:30 opt
+ 4456449 drwxr-xr-x     0      0      4096 12-Apr-2016 23:14 proc
+ 1572865 drwx------     0      0      4096  5-Feb-2018 11:09 root
+ 2883585 drwxr-xr-x     0      0      4096  1-Aug-2017 14:30 run
+  786433 drwxr-xr-x     0      0     12288 15-Feb-2018 11:25 sbin
+ 6815745 drwxr-xr-x     0      0      4096 29-Apr-2017 11:38 snap
+ 1310721 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 srv
+ 3014657 drwxr-xr-x     0      0      4096  5-Feb-2016 12:48 sys
+ 4980737 drwxrwxrwt     0      0      4096 22-Feb-2018 18:29 tmp
+ 1441793 drwxr-xr-x     0      0      4096  1-Aug-2017 14:24 usr
+ 3276801 drwxr-xr-x     0      0      4096  1-Aug-2017 14:34 var
+      16 lrwxrwxrwx     0      0        30 29-Jan-2018 14:35 vmlinuz
+      15 lrwxrwxrwx     0      0        33 29-Jan-2018 14:35 initrd.img
+  917505 drwxrwxr-x     0      0      4096  5-Nov-2017 16:29 cdrom
+X     14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.88444
+      12 lrwxrwxrwx     0      0        33 24-Jan-2018 15:04 initrd.img.old
+      14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.old
+
+dir_partition inode=262145
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 roman
+
+dir_partition inode=262146
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 .
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 ..
+  262147 -rw-r--r--  1000   1000       220  5-Nov-2017 16:31 .bash_logout
+  262148 -rw-r--r--  1000   1000      3907 28-Nov-2017 18:27 .bashrc
+  262149 -rw-r--r--  1000   1000      8980  5-Nov-2017 16:31 examples.desktop
+  262150 -rw-r--r--  1000   1000       677 28-Nov-2017 17:01 .profile
+  262151 drwx------  1000   1000      4096 16-Jan-2018 13:57 .cache
+  262155 -rw-------  1000   1000       102 15-Feb-2018 16:36 .Xauthority
+  262154 -rw-r--r--  1000   1000        25  5-Nov-2017 16:34 .dmrc
+  262156 -rw-------  1000   1000        82 15-Feb-2018 16:36 .xsession-errors
+  262157 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Desktop
+  262158 drwxr-xr-x  1000   1000      4096 11-Jan-2018 15:15 Downloads
+  262159 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Templates
+  262160 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Public
+  262161 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Documents
+  262162 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Music
+  262163 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Pictures
+  262164 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Videos
+  262165 drwx------  1000   1000      4096 15-Feb-2018 16:36 .config
+  262173 drwx------  1000   1000      4096  5-Nov-2017 16:34 .local
+  262183 drwx------  1000   1000      4096 15-Feb-2018 16:36 .gnupg
+  262247 drwx------  1000   1000      4096 15-Feb-2018 17:21 .gconf
+  262191 -rw-------  1000   1000     39041 22-Feb-2018 18:29 .bash_history
+  262277 -rw-------  1000   1000      5414 15-Feb-2018 16:36 .ICEauthority
+  262328 -rw-r--r--  1000   1000         0  5-Nov-2017 16:34 .sudo_as_admin_successful
+  262182 -rw-------  1000   1000      1261 15-Feb-2018 16:35 .xsession-errors.old
+  262354 drwx------  1000   1000      4096 12-Jan-2018 14:12 .mozilla
+  262504 drwx------  1000   1000      4096  7-Nov-2017 20:03 .pki
+  262888 drwx------  1000   1000      4096  7-Nov-2017 20:03 .gnome
+  263576 drwxrwxr-x  1000   1000      4096  4-Feb-2018 13:17 .java
+  266430 drwxrwxr-x  1000   1000      4096  7-Nov-2017 21:00 .PyCharmCE2017.2
+  267101 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:41 .virtualenvs
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 Devel
+  267103 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:44 .nano
+  262673 -rw-rw-r--  1000   1000      9798 20-Nov-2017 17:27 client.ovpn
+  269470 drwxrwxr-x  1000   1000      4096 28-Nov-2017 16:51 .ipython
+  269467 -rw-------  1000   1000       463  6-Dec-2017 17:48 .python_history
+  269738 drwxrwxr-x  1000   1000      4096  4-Dec-2017 18:29 .PyCharmCE2017.3
+  401069 drwxrwxr-x  1000   1000      4096  8-Dec-2017 17:12 .aws
+  524342 drwxrwxr-x  1000   1000      4096  8-Dec-2017 19:07 aws
+  269256 -rw-rw-r--  1000   1000     12310  8-Dec-2017 18:40 nodesource_setup.sh
+  399736 drwxrwxr-x  1000   1000      4096  8-Dec-2017 18:46 .npm
+  401415 drwx------  1000   1000      4096 22-Feb-2018 17:42 .ssh
+X 525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  789531 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:28 JS-topologies
+  264642 -rw-rw-r--  1000   1000        58 16-Jan-2018 15:23 .gitconfig
+  664099 drwx------  1000   1000      4096  5-Feb-2018 12:05 .ansible
+  660707 drwxrwxr-x  1000   1000      4096 13-Feb-2018 16:29 .atom
+  265475 -rw-------  1000   1000         0  5-Feb-2018 12:03 .ansible_galaxy
+  263284 -rw-rw-r--  1000   1000       131 15-Feb-2018 11:15 .xinputrc
+  263444 -rw-r--r--  1000   1000       265 15-Feb-2018 11:34 .pam_environment
+  526278 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:56 TEMP
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-c
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-l
+
+dir_partition inode=267102
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 .
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 ..
+  268070 drwxrwxr-x  1000   1000      4096  4-Dec-2017 17:55 romanknet
+  399759 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:03 py-linux-sysadmins
+  396328 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:02 pyfund
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  526427 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 py-junos-netconify
+
+dir_partition inode=525618
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 .
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 ..
+  525619 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:30 .git
+  526293 -rw-rw-r--  1000   1000        32 19-Feb-2018 17:17 .gitignore
+  526294 -rw-rw-r--  1000   1000       115 15-Feb-2018 11:57 README.md
+  526295 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:57 ansiblej
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pythonj
+  526414 -rw-rw-r--  1000   1000     16384 22-Feb-2018 18:37 testdisk.log
+
+dir_partition inode=526412
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526413
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/jnciebc
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 526414 -rw-rw-r--  1000   1000     16384 22-Feb-2018 18:37 README.md
+X 526415 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 parser
+X 526420 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 parser_configs
+X 526424 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527678 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 .idea
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526413
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/jnciebc
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 526414 -rw-rw-r--  1000   1000     16384 22-Feb-2018 18:37 README.md
+X 526415 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 parser
+X 526420 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 parser_configs
+X 526424 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527678 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 .idea
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526425
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+Directory /home/roman/Devel/juniper
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 .
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 ..
+  525619 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:30 .git
+  526293 -rw-rw-r--  1000   1000        32 19-Feb-2018 17:17 .gitignore
+  526294 -rw-rw-r--  1000   1000       115 15-Feb-2018 11:57 README.md
+  526295 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:57 ansiblej
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pythonj
+  526414 -rw-rw-r--  1000   1000     16384 22-Feb-2018 18:37 testdisk.log
+
+dir_partition inode=526412
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526425
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+
+dir_partition inode=660631
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj/tools
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+
+dir_partition inode=660631
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj/tools
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526425
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+
+dir_partition inode=660631
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj/tools
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526425
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+
+dir_partition inode=660631
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj/tools
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526425
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyez
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+
+dir_partition inode=660631
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyez/tools
+Directory /home/roman/Devel/juniper/pythonj/pyez
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 -rw-------  1000   1000         0 22-Feb-2018 18:31 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyez
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+Directory /home/roman/Devel/juniper
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 .
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 ..
+  525619 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:30 .git
+  526293 -rw-rw-r--  1000   1000        32 19-Feb-2018 17:17 .gitignore
+  526294 -rw-rw-r--  1000   1000       115 15-Feb-2018 11:57 README.md
+  526295 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:57 ansiblej
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pythonj
+  526414 -rw-rw-r--  1000   1000     16384 22-Feb-2018 18:37 testdisk.log
+Directory /home/roman/Devel
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 .
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 ..
+  268070 drwxrwxr-x  1000   1000      4096  4-Dec-2017 17:55 romanknet
+  399759 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:03 py-linux-sysadmins
+  396328 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:02 pyfund
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  526427 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 py-junos-netconify
+Directory /home/roman
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 .
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 ..
+  262147 -rw-r--r--  1000   1000       220  5-Nov-2017 16:31 .bash_logout
+  262148 -rw-r--r--  1000   1000      3907 28-Nov-2017 18:27 .bashrc
+  262149 -rw-r--r--  1000   1000      8980  5-Nov-2017 16:31 examples.desktop
+  262150 -rw-r--r--  1000   1000       677 28-Nov-2017 17:01 .profile
+  262151 drwx------  1000   1000      4096 16-Jan-2018 13:57 .cache
+  262155 -rw-------  1000   1000       102 15-Feb-2018 16:36 .Xauthority
+  262154 -rw-r--r--  1000   1000        25  5-Nov-2017 16:34 .dmrc
+  262156 -rw-------  1000   1000        82 15-Feb-2018 16:36 .xsession-errors
+  262157 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Desktop
+  262158 drwxr-xr-x  1000   1000      4096 11-Jan-2018 15:15 Downloads
+  262159 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Templates
+  262160 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Public
+  262161 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Documents
+  262162 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Music
+  262163 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Pictures
+  262164 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Videos
+  262165 drwx------  1000   1000      4096 15-Feb-2018 16:36 .config
+  262173 drwx------  1000   1000      4096  5-Nov-2017 16:34 .local
+  262183 drwx------  1000   1000      4096 15-Feb-2018 16:36 .gnupg
+  262247 drwx------  1000   1000      4096 15-Feb-2018 17:21 .gconf
+  262191 -rw-------  1000   1000     39041 22-Feb-2018 18:29 .bash_history
+  262277 -rw-------  1000   1000      5414 15-Feb-2018 16:36 .ICEauthority
+  262328 -rw-r--r--  1000   1000         0  5-Nov-2017 16:34 .sudo_as_admin_successful
+  262182 -rw-------  1000   1000      1261 15-Feb-2018 16:35 .xsession-errors.old
+  262354 drwx------  1000   1000      4096 12-Jan-2018 14:12 .mozilla
+  262504 drwx------  1000   1000      4096  7-Nov-2017 20:03 .pki
+  262888 drwx------  1000   1000      4096  7-Nov-2017 20:03 .gnome
+  263576 drwxrwxr-x  1000   1000      4096  4-Feb-2018 13:17 .java
+  266430 drwxrwxr-x  1000   1000      4096  7-Nov-2017 21:00 .PyCharmCE2017.2
+  267101 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:41 .virtualenvs
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 Devel
+  267103 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:44 .nano
+  262673 -rw-rw-r--  1000   1000      9798 20-Nov-2017 17:27 client.ovpn
+  269470 drwxrwxr-x  1000   1000      4096 28-Nov-2017 16:51 .ipython
+  269467 -rw-------  1000   1000       463  6-Dec-2017 17:48 .python_history
+  269738 drwxrwxr-x  1000   1000      4096  4-Dec-2017 18:29 .PyCharmCE2017.3
+  401069 drwxrwxr-x  1000   1000      4096  8-Dec-2017 17:12 .aws
+  524342 drwxrwxr-x  1000   1000      4096  8-Dec-2017 19:07 aws
+  269256 -rw-rw-r--  1000   1000     12310  8-Dec-2017 18:40 nodesource_setup.sh
+  399736 drwxrwxr-x  1000   1000      4096  8-Dec-2017 18:46 .npm
+  401415 drwx------  1000   1000      4096 22-Feb-2018 17:42 .ssh
+X 525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  789531 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:28 JS-topologies
+  264642 -rw-rw-r--  1000   1000        58 16-Jan-2018 15:23 .gitconfig
+  664099 drwx------  1000   1000      4096  5-Feb-2018 12:05 .ansible
+  660707 drwxrwxr-x  1000   1000      4096 13-Feb-2018 16:29 .atom
+  265475 -rw-------  1000   1000         0  5-Feb-2018 12:03 .ansible_galaxy
+  263284 -rw-rw-r--  1000   1000       131 15-Feb-2018 11:15 .xinputrc
+  263444 -rw-r--r--  1000   1000       265 15-Feb-2018 11:34 .pam_environment
+  526278 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:56 TEMP
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-c
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-l
+Directory /home
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 roman
+Directory /
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+      11 drwx------     0      0     16384  5-Nov-2017 19:27 lost+found
+ 1835009 drwxr-xr-x     0      0     12288 15-Feb-2018 16:35 etc
+ 1048577 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 media
+ 3145729 drwxr-xr-x     0      0      4096 15-Feb-2018 11:25 bin
+ 6029313 drwxr-xr-x     0      0      4096 15-Feb-2018 10:53 boot
+ 4718593 drwxr-xr-x     0      0      4096  1-Aug-2017 14:28 dev
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 home
+ 6291457 drwxr-xr-x     0      0      4096 22-Nov-2017 16:17 lib
+ 4849665 drwxr-xr-x     0      0      4096 17-Jan-2018 15:02 lib64
+ 1179649 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 mnt
+ 2621441 drwxr-xr-x     0      0      4096  5-Feb-2018 11:30 opt
+ 4456449 drwxr-xr-x     0      0      4096 12-Apr-2016 23:14 proc
+ 1572865 drwx------     0      0      4096  5-Feb-2018 11:09 root
+ 2883585 drwxr-xr-x     0      0      4096  1-Aug-2017 14:30 run
+  786433 drwxr-xr-x     0      0     12288 15-Feb-2018 11:25 sbin
+ 6815745 drwxr-xr-x     0      0      4096 29-Apr-2017 11:38 snap
+ 1310721 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 srv
+ 3014657 drwxr-xr-x     0      0      4096  5-Feb-2016 12:48 sys
+ 4980737 drwxrwxrwt     0      0      4096 22-Feb-2018 18:29 tmp
+ 1441793 drwxr-xr-x     0      0      4096  1-Aug-2017 14:24 usr
+ 3276801 drwxr-xr-x     0      0      4096  1-Aug-2017 14:34 var
+      16 lrwxrwxrwx     0      0        30 29-Jan-2018 14:35 vmlinuz
+      15 lrwxrwxrwx     0      0        33 29-Jan-2018 14:35 initrd.img
+  917505 drwxrwxr-x     0      0      4096  5-Nov-2017 16:29 cdrom
+X     14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.88444
+      12 lrwxrwxrwx     0      0        33 24-Jan-2018 15:04 initrd.img.old
+      14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.old
+
+Interface Advanced
+Geometry from i386 MBR: head=255 sector=63
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+ 2 E extended             14620 202 45 15664 222 46   16773122
+ 5 L Linux Swap           14620 202 47 15664 222 46   16773120
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8190 MiB
+Image created successfully.
+
+Interface Advanced
+Geometry from i386 MBR: head=255 sector=63
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+ 2 E extended             14620 202 45 15664 222 46   16773122
+ 5 L Linux Swap           14620 202 47 15664 222 46   16773120
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8190 MiB
+
+
+dir_partition inode=2
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+      11 drwx------     0      0     16384  5-Nov-2017 19:27 lost+found
+ 1835009 drwxr-xr-x     0      0     12288 15-Feb-2018 16:35 etc
+ 1048577 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 media
+ 3145729 drwxr-xr-x     0      0      4096 15-Feb-2018 11:25 bin
+ 6029313 drwxr-xr-x     0      0      4096 15-Feb-2018 10:53 boot
+ 4718593 drwxr-xr-x     0      0      4096  1-Aug-2017 14:28 dev
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 home
+ 6291457 drwxr-xr-x     0      0      4096 22-Nov-2017 16:17 lib
+ 4849665 drwxr-xr-x     0      0      4096 17-Jan-2018 15:02 lib64
+ 1179649 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 mnt
+ 2621441 drwxr-xr-x     0      0      4096  5-Feb-2018 11:30 opt
+ 4456449 drwxr-xr-x     0      0      4096 12-Apr-2016 23:14 proc
+ 1572865 drwx------     0      0      4096  5-Feb-2018 11:09 root
+ 2883585 drwxr-xr-x     0      0      4096  1-Aug-2017 14:30 run
+  786433 drwxr-xr-x     0      0     12288 15-Feb-2018 11:25 sbin
+ 6815745 drwxr-xr-x     0      0      4096 29-Apr-2017 11:38 snap
+ 1310721 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 srv
+ 3014657 drwxr-xr-x     0      0      4096  5-Feb-2016 12:48 sys
+ 4980737 drwxrwxrwt     0      0      4096 22-Feb-2018 18:29 tmp
+ 1441793 drwxr-xr-x     0      0      4096  1-Aug-2017 14:24 usr
+ 3276801 drwxr-xr-x     0      0      4096  1-Aug-2017 14:34 var
+      16 lrwxrwxrwx     0      0        30 29-Jan-2018 14:35 vmlinuz
+      15 lrwxrwxrwx     0      0        33 29-Jan-2018 14:35 initrd.img
+  917505 drwxrwxr-x     0      0      4096  5-Nov-2017 16:29 cdrom
+X     14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.88444
+      12 lrwxrwxrwx     0      0        33 24-Jan-2018 15:04 initrd.img.old
+      14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.old
+
+dir_partition inode=262145
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 roman
+
+dir_partition inode=262146
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 .
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 ..
+  262147 -rw-r--r--  1000   1000       220  5-Nov-2017 16:31 .bash_logout
+  262148 -rw-r--r--  1000   1000      3907 28-Nov-2017 18:27 .bashrc
+  262149 -rw-r--r--  1000   1000      8980  5-Nov-2017 16:31 examples.desktop
+  262150 -rw-r--r--  1000   1000       677 28-Nov-2017 17:01 .profile
+  262151 drwx------  1000   1000      4096 16-Jan-2018 13:57 .cache
+  262155 -rw-------  1000   1000       102 15-Feb-2018 16:36 .Xauthority
+  262154 -rw-r--r--  1000   1000        25  5-Nov-2017 16:34 .dmrc
+  262156 -rw-------  1000   1000        82 15-Feb-2018 16:36 .xsession-errors
+  262157 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Desktop
+  262158 drwxr-xr-x  1000   1000      4096 11-Jan-2018 15:15 Downloads
+  262159 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Templates
+  262160 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Public
+  262161 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Documents
+  262162 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Music
+  262163 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Pictures
+  262164 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Videos
+  262165 drwx------  1000   1000      4096 15-Feb-2018 16:36 .config
+  262173 drwx------  1000   1000      4096  5-Nov-2017 16:34 .local
+  262183 drwx------  1000   1000      4096 15-Feb-2018 16:36 .gnupg
+  262247 drwx------  1000   1000      4096 15-Feb-2018 17:21 .gconf
+  262191 -rw-------  1000   1000     39041 22-Feb-2018 18:29 .bash_history
+  262277 -rw-------  1000   1000      5414 15-Feb-2018 16:36 .ICEauthority
+  262328 -rw-r--r--  1000   1000         0  5-Nov-2017 16:34 .sudo_as_admin_successful
+  262182 -rw-------  1000   1000      1261 15-Feb-2018 16:35 .xsession-errors.old
+  262354 drwx------  1000   1000      4096 12-Jan-2018 14:12 .mozilla
+  262504 drwx------  1000   1000      4096  7-Nov-2017 20:03 .pki
+  262888 drwx------  1000   1000      4096  7-Nov-2017 20:03 .gnome
+  263576 drwxrwxr-x  1000   1000      4096  4-Feb-2018 13:17 .java
+  266430 drwxrwxr-x  1000   1000      4096  7-Nov-2017 21:00 .PyCharmCE2017.2
+  267101 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:41 .virtualenvs
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 Devel
+  267103 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:44 .nano
+  262673 -rw-rw-r--  1000   1000      9798 20-Nov-2017 17:27 client.ovpn
+  269470 drwxrwxr-x  1000   1000      4096 28-Nov-2017 16:51 .ipython
+  269467 -rw-------  1000   1000       463  6-Dec-2017 17:48 .python_history
+  269738 drwxrwxr-x  1000   1000      4096  4-Dec-2017 18:29 .PyCharmCE2017.3
+  401069 drwxrwxr-x  1000   1000      4096  8-Dec-2017 17:12 .aws
+  524342 drwxrwxr-x  1000   1000      4096  8-Dec-2017 19:07 aws
+  269256 -rw-rw-r--  1000   1000     12310  8-Dec-2017 18:40 nodesource_setup.sh
+  399736 drwxrwxr-x  1000   1000      4096  8-Dec-2017 18:46 .npm
+  401415 drwx------  1000   1000      4096 22-Feb-2018 17:42 .ssh
+X 525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  789531 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:28 JS-topologies
+  264642 -rw-rw-r--  1000   1000        58 16-Jan-2018 15:23 .gitconfig
+  664099 drwx------  1000   1000      4096  5-Feb-2018 12:05 .ansible
+  660707 drwxrwxr-x  1000   1000      4096 13-Feb-2018 16:29 .atom
+  265475 -rw-------  1000   1000         0  5-Feb-2018 12:03 .ansible_galaxy
+  263284 -rw-rw-r--  1000   1000       131 15-Feb-2018 11:15 .xinputrc
+  263444 -rw-r--r--  1000   1000       265 15-Feb-2018 11:34 .pam_environment
+  526278 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:56 TEMP
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-c
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-l
+
+dir_partition inode=267102
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 .
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 ..
+  268070 drwxrwxr-x  1000   1000      4096  4-Dec-2017 17:55 romanknet
+  399759 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:03 py-linux-sysadmins
+  396328 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:02 pyfund
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  526427 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 py-junos-netconify
+
+dir_partition inode=525618
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 .
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 ..
+  525619 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:30 .git
+  526293 -rw-rw-r--  1000   1000        32 19-Feb-2018 17:17 .gitignore
+  526294 -rw-rw-r--  1000   1000       115 15-Feb-2018 11:57 README.md
+  526295 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:57 ansiblej
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 pythonj
+  526414 -rw-rw-r--  1000   1000     45056 22-Feb-2018 18:48 testdisk.log
+
+dir_partition inode=526412
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+  660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 home
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526413
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/jnciebc
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 ..
+X 526414 -rw-rw-r--  1000   1000     45056 22-Feb-2018 18:48 README.md
+X 526415 -rw-r--r--     0      0 8587838464 22-Feb-2018 18:46 parser
+X 526420 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 parser_configs
+X 526424 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527678 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 .idea
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+  660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 home
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526425
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+
+dir_partition inode=660631
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj/tools
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+  660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 home
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+Directory /home/roman/Devel/juniper
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 .
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 ..
+  525619 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:30 .git
+  526293 -rw-rw-r--  1000   1000        32 19-Feb-2018 17:17 .gitignore
+  526294 -rw-rw-r--  1000   1000       115 15-Feb-2018 11:57 README.md
+  526295 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:57 ansiblej
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 pythonj
+  526414 -rw-rw-r--  1000   1000     45056 22-Feb-2018 18:48 testdisk.log
+Directory /home/roman/Devel
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 .
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 ..
+  268070 drwxrwxr-x  1000   1000      4096  4-Dec-2017 17:55 romanknet
+  399759 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:03 py-linux-sysadmins
+  396328 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:02 pyfund
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  526427 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 py-junos-netconify
+Directory /home/roman
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 .
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 ..
+  262147 -rw-r--r--  1000   1000       220  5-Nov-2017 16:31 .bash_logout
+  262148 -rw-r--r--  1000   1000      3907 28-Nov-2017 18:27 .bashrc
+  262149 -rw-r--r--  1000   1000      8980  5-Nov-2017 16:31 examples.desktop
+  262150 -rw-r--r--  1000   1000       677 28-Nov-2017 17:01 .profile
+  262151 drwx------  1000   1000      4096 16-Jan-2018 13:57 .cache
+  262155 -rw-------  1000   1000       102 15-Feb-2018 16:36 .Xauthority
+  262154 -rw-r--r--  1000   1000        25  5-Nov-2017 16:34 .dmrc
+  262156 -rw-------  1000   1000        82 15-Feb-2018 16:36 .xsession-errors
+  262157 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Desktop
+  262158 drwxr-xr-x  1000   1000      4096 11-Jan-2018 15:15 Downloads
+  262159 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Templates
+  262160 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Public
+  262161 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Documents
+  262162 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Music
+  262163 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Pictures
+  262164 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Videos
+  262165 drwx------  1000   1000      4096 15-Feb-2018 16:36 .config
+  262173 drwx------  1000   1000      4096  5-Nov-2017 16:34 .local
+  262183 drwx------  1000   1000      4096 15-Feb-2018 16:36 .gnupg
+  262247 drwx------  1000   1000      4096 15-Feb-2018 17:21 .gconf
+  262191 -rw-------  1000   1000     39041 22-Feb-2018 18:29 .bash_history
+  262277 -rw-------  1000   1000      5414 15-Feb-2018 16:36 .ICEauthority
+  262328 -rw-r--r--  1000   1000         0  5-Nov-2017 16:34 .sudo_as_admin_successful
+  262182 -rw-------  1000   1000      1261 15-Feb-2018 16:35 .xsession-errors.old
+  262354 drwx------  1000   1000      4096 12-Jan-2018 14:12 .mozilla
+  262504 drwx------  1000   1000      4096  7-Nov-2017 20:03 .pki
+  262888 drwx------  1000   1000      4096  7-Nov-2017 20:03 .gnome
+  263576 drwxrwxr-x  1000   1000      4096  4-Feb-2018 13:17 .java
+  266430 drwxrwxr-x  1000   1000      4096  7-Nov-2017 21:00 .PyCharmCE2017.2
+  267101 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:41 .virtualenvs
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 Devel
+  267103 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:44 .nano
+  262673 -rw-rw-r--  1000   1000      9798 20-Nov-2017 17:27 client.ovpn
+  269470 drwxrwxr-x  1000   1000      4096 28-Nov-2017 16:51 .ipython
+  269467 -rw-------  1000   1000       463  6-Dec-2017 17:48 .python_history
+  269738 drwxrwxr-x  1000   1000      4096  4-Dec-2017 18:29 .PyCharmCE2017.3
+  401069 drwxrwxr-x  1000   1000      4096  8-Dec-2017 17:12 .aws
+  524342 drwxrwxr-x  1000   1000      4096  8-Dec-2017 19:07 aws
+  269256 -rw-rw-r--  1000   1000     12310  8-Dec-2017 18:40 nodesource_setup.sh
+  399736 drwxrwxr-x  1000   1000      4096  8-Dec-2017 18:46 .npm
+  401415 drwx------  1000   1000      4096 22-Feb-2018 17:42 .ssh
+X 525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  789531 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:28 JS-topologies
+  264642 -rw-rw-r--  1000   1000        58 16-Jan-2018 15:23 .gitconfig
+  664099 drwx------  1000   1000      4096  5-Feb-2018 12:05 .ansible
+  660707 drwxrwxr-x  1000   1000      4096 13-Feb-2018 16:29 .atom
+  265475 -rw-------  1000   1000         0  5-Feb-2018 12:03 .ansible_galaxy
+  263284 -rw-rw-r--  1000   1000       131 15-Feb-2018 11:15 .xinputrc
+  263444 -rw-r--r--  1000   1000       265 15-Feb-2018 11:34 .pam_environment
+  526278 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:56 TEMP
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-c
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-l
+Directory /home
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 roman
+Directory /
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+      11 drwx------     0      0     16384  5-Nov-2017 19:27 lost+found
+ 1835009 drwxr-xr-x     0      0     12288 15-Feb-2018 16:35 etc
+ 1048577 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 media
+ 3145729 drwxr-xr-x     0      0      4096 15-Feb-2018 11:25 bin
+ 6029313 drwxr-xr-x     0      0      4096 15-Feb-2018 10:53 boot
+ 4718593 drwxr-xr-x     0      0      4096  1-Aug-2017 14:28 dev
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 home
+ 6291457 drwxr-xr-x     0      0      4096 22-Nov-2017 16:17 lib
+ 4849665 drwxr-xr-x     0      0      4096 17-Jan-2018 15:02 lib64
+ 1179649 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 mnt
+ 2621441 drwxr-xr-x     0      0      4096  5-Feb-2018 11:30 opt
+ 4456449 drwxr-xr-x     0      0      4096 12-Apr-2016 23:14 proc
+ 1572865 drwx------     0      0      4096  5-Feb-2018 11:09 root
+ 2883585 drwxr-xr-x     0      0      4096  1-Aug-2017 14:30 run
+  786433 drwxr-xr-x     0      0     12288 15-Feb-2018 11:25 sbin
+ 6815745 drwxr-xr-x     0      0      4096 29-Apr-2017 11:38 snap
+ 1310721 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 srv
+ 3014657 drwxr-xr-x     0      0      4096  5-Feb-2016 12:48 sys
+ 4980737 drwxrwxrwt     0      0      4096 22-Feb-2018 18:29 tmp
+ 1441793 drwxr-xr-x     0      0      4096  1-Aug-2017 14:24 usr
+ 3276801 drwxr-xr-x     0      0      4096  1-Aug-2017 14:34 var
+      16 lrwxrwxrwx     0      0        30 29-Jan-2018 14:35 vmlinuz
+      15 lrwxrwxrwx     0      0        33 29-Jan-2018 14:35 initrd.img
+  917505 drwxrwxr-x     0      0      4096  5-Nov-2017 16:29 cdrom
+X     14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.88444
+      12 lrwxrwxrwx     0      0        33 24-Jan-2018 15:04 initrd.img.old
+      14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.old
+
+Analyse Disk /dev/sda - 128 GB / 120 GiB - CHS 15665 255 63
+Geometry from i386 MBR: head=255 sector=63
+Current partition structure:
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+ 2 E extended             14620 202 45 15664 222 46   16773122
+ 5 L Linux Swap           14620 202 47 15664 222 46   16773120
+
+search_part()
+Disk /dev/sda - 128 GB / 120 GiB - CHS 15665 255 63
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux Swap           14620 202 47 15664 222 30   16773104
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8189 MiB
+
+Results
+   * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+   P Linux Swap           14620 202 47 15664 222 46   16773120
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8190 MiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 234878976 linear /dev/sda 2048" | dmsetup create test0
+echo "0 16773120 linear /dev/sda 234883072" | dmsetup create test1
+
+interface_write()
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+ 2 P Linux Swap           14620 202 47 15664 222 46   16773120
+
+search_part()
+Disk /dev/sda - 128 GB / 120 GiB - CHS 15665 255 63
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+
+block_group_nr 1
+
+recover_EXT2: "e2fsck -b 32768 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=1/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 3
+
+recover_EXT2: "e2fsck -b 98304 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=3/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 5
+
+recover_EXT2: "e2fsck -b 163840 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=5/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 7
+
+recover_EXT2: "e2fsck -b 229376 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=7/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 9
+
+recover_EXT2: "e2fsck -b 294912 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=9/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 25
+
+recover_EXT2: "e2fsck -b 819200 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=25/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 27
+
+recover_EXT2: "e2fsck -b 884736 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=27/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 49
+
+recover_EXT2: "e2fsck -b 1605632 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=49/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 81
+
+recover_EXT2: "e2fsck -b 2654208 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=81/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 125
+
+recover_EXT2: "e2fsck -b 4096000 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=125/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 243
+
+recover_EXT2: "e2fsck -b 7962624 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=243/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 343
+
+recover_EXT2: "e2fsck -b 11239424 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=343/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7066 149 60 21687  32 41  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113524736, size=234878976, end=348403711, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7066 214 61 21687  97 42  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113528832, size=234878976, end=348407807, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7067  57 31 21687 195 12  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113534976, size=234878976, end=348413951, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7069  67 39 21689 205 20  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113567744, size=234878976, end=348446719, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7069 132 40 21690  15 21  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113571840, size=234878976, end=348450815, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7075 130 32 21696  13 13  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113668096, size=234878976, end=348547071, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7077  43  7 21697 180 51  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113694720, size=234878976, end=348573695, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7077  75 39 21697 213 20  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113696768, size=234878976, end=348575743, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7077 108  8 21697 245 52  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113698816, size=234878976, end=348577791, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7079 248 18 21700 130 62  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113739776, size=234878976, end=348618751, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7080 220 53 21701 103 34  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113754112, size=234878976, end=348633087, disk end=251658240)
+
+recover_EXT2: s_block_group_nr=0/895, s_mnt_count=16/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                 7081 225 57 21702 108 38  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+This partition ends after the disk limits. (start=113770496, size=234878976, end=348649471, disk end=251658240)
+
+block_group_nr 625
+
+recover_EXT2: "e2fsck -b 20480000 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=625/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+
+block_group_nr 729
+
+recover_EXT2: "e2fsck -b 23887872 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=729/895, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 29359872
+recover_EXT2: part_size 234878976
+     Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 120 GB / 111 GiB
+     Linux Swap           14620 202 47 15664 222 30   16773104
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8189 MiB
+Disk /dev/sda - 128 GB / 120 GiB - CHS 15665 255 63
+Check the harddisk size: HD jumpers settings, BIOS detection...
+The harddisk (128 GB / 120 GiB) seems too small! (< 178 GB / 166 GiB)
+The following partitions can't be recovered:
+     Linux                 7066 149 60 21687  32 41  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7066 214 61 21687  97 42  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7067  57 31 21687 195 12  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7069  67 39 21689 205 20  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7069 132 40 21690  15 21  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7075 130 32 21696  13 13  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7077  43  7 21697 180 51  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7077  75 39 21697 213 20  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7077 108  8 21697 245 52  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7079 248 18 21700 130 62  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7080 220 53 21701 103 34  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+     Linux                 7081 225 57 21702 108 38  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+
+Results
+   * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+   P Linux Swap           14620 202 47 15664 222 46   16773120
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8190 MiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 234878976 linear /dev/sda 2048" | dmsetup create test0
+echo "0 16773120 linear /dev/sda 234883072" | dmsetup create test1
+
+interface_write()
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+ 2 P Linux Swap           14620 202 47 15664 222 46   16773120
+simulate write!
+
+write_mbr_i386: starting...
+write_all_log_i386: starting...
+No extended partition
+
+Interface Advanced
+Geometry from i386 MBR: head=255 sector=63
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+ 2 E extended             14620 202 45 15664 222 46   16773122
+ 5 L Linux Swap           14620 202 47 15664 222 46   16773120
+     SWAP2 version 1, pagesize=4096, 8587 MB / 8190 MiB
+
+
+dir_partition inode=2
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+      11 drwx------     0      0     16384  5-Nov-2017 19:27 lost+found
+ 1835009 drwxr-xr-x     0      0     12288 15-Feb-2018 16:35 etc
+ 1048577 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 media
+ 3145729 drwxr-xr-x     0      0      4096 15-Feb-2018 11:25 bin
+ 6029313 drwxr-xr-x     0      0      4096 15-Feb-2018 10:53 boot
+ 4718593 drwxr-xr-x     0      0      4096  1-Aug-2017 14:28 dev
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 home
+ 6291457 drwxr-xr-x     0      0      4096 22-Nov-2017 16:17 lib
+ 4849665 drwxr-xr-x     0      0      4096 17-Jan-2018 15:02 lib64
+ 1179649 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 mnt
+ 2621441 drwxr-xr-x     0      0      4096  5-Feb-2018 11:30 opt
+ 4456449 drwxr-xr-x     0      0      4096 12-Apr-2016 23:14 proc
+ 1572865 drwx------     0      0      4096  5-Feb-2018 11:09 root
+ 2883585 drwxr-xr-x     0      0      4096  1-Aug-2017 14:30 run
+  786433 drwxr-xr-x     0      0     12288 15-Feb-2018 11:25 sbin
+ 6815745 drwxr-xr-x     0      0      4096 29-Apr-2017 11:38 snap
+ 1310721 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 srv
+ 3014657 drwxr-xr-x     0      0      4096  5-Feb-2016 12:48 sys
+ 4980737 drwxrwxrwt     0      0      4096 22-Feb-2018 18:29 tmp
+ 1441793 drwxr-xr-x     0      0      4096  1-Aug-2017 14:24 usr
+ 3276801 drwxr-xr-x     0      0      4096  1-Aug-2017 14:34 var
+      16 lrwxrwxrwx     0      0        30 29-Jan-2018 14:35 vmlinuz
+      15 lrwxrwxrwx     0      0        33 29-Jan-2018 14:35 initrd.img
+  917505 drwxrwxr-x     0      0      4096  5-Nov-2017 16:29 cdrom
+X     14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.88444
+      12 lrwxrwxrwx     0      0        33 24-Jan-2018 15:04 initrd.img.old
+      14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.old
+
+dir_partition inode=262145
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 roman
+
+dir_partition inode=262146
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 .
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 ..
+  262147 -rw-r--r--  1000   1000       220  5-Nov-2017 16:31 .bash_logout
+  262148 -rw-r--r--  1000   1000      3907 28-Nov-2017 18:27 .bashrc
+  262149 -rw-r--r--  1000   1000      8980  5-Nov-2017 16:31 examples.desktop
+  262150 -rw-r--r--  1000   1000       677 28-Nov-2017 17:01 .profile
+  262151 drwx------  1000   1000      4096 16-Jan-2018 13:57 .cache
+  262155 -rw-------  1000   1000       102 15-Feb-2018 16:36 .Xauthority
+  262154 -rw-r--r--  1000   1000        25  5-Nov-2017 16:34 .dmrc
+  262156 -rw-------  1000   1000        82 15-Feb-2018 16:36 .xsession-errors
+  262157 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Desktop
+  262158 drwxr-xr-x  1000   1000      4096 11-Jan-2018 15:15 Downloads
+  262159 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Templates
+  262160 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Public
+  262161 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Documents
+  262162 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Music
+  262163 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Pictures
+  262164 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Videos
+  262165 drwx------  1000   1000      4096 15-Feb-2018 16:36 .config
+  262173 drwx------  1000   1000      4096  5-Nov-2017 16:34 .local
+  262183 drwx------  1000   1000      4096 15-Feb-2018 16:36 .gnupg
+  262247 drwx------  1000   1000      4096 15-Feb-2018 17:21 .gconf
+  262191 -rw-------  1000   1000     39041 22-Feb-2018 18:29 .bash_history
+  262277 -rw-------  1000   1000      5414 15-Feb-2018 16:36 .ICEauthority
+  262328 -rw-r--r--  1000   1000         0  5-Nov-2017 16:34 .sudo_as_admin_successful
+  262182 -rw-------  1000   1000      1261 15-Feb-2018 16:35 .xsession-errors.old
+  262354 drwx------  1000   1000      4096 12-Jan-2018 14:12 .mozilla
+  262504 drwx------  1000   1000      4096  7-Nov-2017 20:03 .pki
+  262888 drwx------  1000   1000      4096  7-Nov-2017 20:03 .gnome
+  263576 drwxrwxr-x  1000   1000      4096  4-Feb-2018 13:17 .java
+  266430 drwxrwxr-x  1000   1000      4096  7-Nov-2017 21:00 .PyCharmCE2017.2
+  267101 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:41 .virtualenvs
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 Devel
+  267103 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:44 .nano
+  262673 -rw-rw-r--  1000   1000      9798 20-Nov-2017 17:27 client.ovpn
+  269470 drwxrwxr-x  1000   1000      4096 28-Nov-2017 16:51 .ipython
+  269467 -rw-------  1000   1000       463  6-Dec-2017 17:48 .python_history
+  269738 drwxrwxr-x  1000   1000      4096  4-Dec-2017 18:29 .PyCharmCE2017.3
+  401069 drwxrwxr-x  1000   1000      4096  8-Dec-2017 17:12 .aws
+  524342 drwxrwxr-x  1000   1000      4096  8-Dec-2017 19:07 aws
+  269256 -rw-rw-r--  1000   1000     12310  8-Dec-2017 18:40 nodesource_setup.sh
+  399736 drwxrwxr-x  1000   1000      4096  8-Dec-2017 18:46 .npm
+  401415 drwx------  1000   1000      4096 22-Feb-2018 17:42 .ssh
+X 525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  789531 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:28 JS-topologies
+  264642 -rw-rw-r--  1000   1000        58 16-Jan-2018 15:23 .gitconfig
+  664099 drwx------  1000   1000      4096  5-Feb-2018 12:05 .ansible
+  660707 drwxrwxr-x  1000   1000      4096 13-Feb-2018 16:29 .atom
+  265475 -rw-------  1000   1000         0  5-Feb-2018 12:03 .ansible_galaxy
+  263284 -rw-rw-r--  1000   1000       131 15-Feb-2018 11:15 .xinputrc
+  263444 -rw-r--r--  1000   1000       265 15-Feb-2018 11:34 .pam_environment
+  526278 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:56 TEMP
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-c
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-l
+
+dir_partition inode=267102
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 .
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 ..
+  268070 drwxrwxr-x  1000   1000      4096  4-Dec-2017 17:55 romanknet
+  399759 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:03 py-linux-sysadmins
+  396328 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:02 pyfund
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  526427 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 py-junos-netconify
+
+dir_partition inode=525618
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 .
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 ..
+  525619 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:30 .git
+  526293 -rw-rw-r--  1000   1000        32 19-Feb-2018 17:17 .gitignore
+  526294 -rw-rw-r--  1000   1000       115 15-Feb-2018 11:57 README.md
+  526295 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:57 ansiblej
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 pythonj
+  526414 -rw-rw-r--  1000   1000     73728 22-Feb-2018 18:52 testdisk.log
+
+dir_partition inode=526412
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+  660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 home
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526425
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+
+dir_partition inode=660631
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj/tools
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+  660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 home
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+
+dir_partition inode=526425
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+
+dir_partition inode=660631
+ 1 * Linux                    0  32 33 14620 170 14  234878976
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 120 GB / 111 GiB
+Directory /home/roman/Devel/juniper/pythonj/pyezj/tools
+Directory /home/roman/Devel/juniper/pythonj/pyezj
+  526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 .
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 ..
+X 660631 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 tools
+X 660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 .idea
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py
+X 527677 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.yml
+X 663252 drwxrwxr-x  1000   1000         0 22-Feb-2018 18:26 templates
+X 526426 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 README.md
+X 527679 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+X 527676 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 loader.py___jb_old___
+Directory /home/roman/Devel/juniper/pythonj
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 .
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 ..
+  526413 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 jnciebc
+  660615 drwxr-xr-x     0      0      4096 22-Feb-2018 18:39 home
+X 526425 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:26 pyezj
+X 526423 -rw-rw-r--  1000   1000         0 22-Feb-2018 18:26 requirements.txt
+Directory /home/roman/Devel/juniper
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 .
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 ..
+  525619 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:30 .git
+  526293 -rw-rw-r--  1000   1000        32 19-Feb-2018 17:17 .gitignore
+  526294 -rw-rw-r--  1000   1000       115 15-Feb-2018 11:57 README.md
+  526295 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:57 ansiblej
+  526412 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:39 pythonj
+  526414 -rw-rw-r--  1000   1000     73728 22-Feb-2018 18:52 testdisk.log
+Directory /home/roman/Devel
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 .
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 ..
+  268070 drwxrwxr-x  1000   1000      4096  4-Dec-2017 17:55 romanknet
+  399759 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:03 py-linux-sysadmins
+  396328 drwxrwxr-x  1000   1000      4096  6-Dec-2017 18:02 pyfund
+  525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  526427 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 py-junos-netconify
+Directory /home/roman
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 .
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 ..
+  262147 -rw-r--r--  1000   1000       220  5-Nov-2017 16:31 .bash_logout
+  262148 -rw-r--r--  1000   1000      3907 28-Nov-2017 18:27 .bashrc
+  262149 -rw-r--r--  1000   1000      8980  5-Nov-2017 16:31 examples.desktop
+  262150 -rw-r--r--  1000   1000       677 28-Nov-2017 17:01 .profile
+  262151 drwx------  1000   1000      4096 16-Jan-2018 13:57 .cache
+  262155 -rw-------  1000   1000       102 15-Feb-2018 16:36 .Xauthority
+  262154 -rw-r--r--  1000   1000        25  5-Nov-2017 16:34 .dmrc
+  262156 -rw-------  1000   1000        82 15-Feb-2018 16:36 .xsession-errors
+  262157 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Desktop
+  262158 drwxr-xr-x  1000   1000      4096 11-Jan-2018 15:15 Downloads
+  262159 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Templates
+  262160 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Public
+  262161 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Documents
+  262162 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Music
+  262163 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Pictures
+  262164 drwxr-xr-x  1000   1000      4096  5-Nov-2017 16:34 Videos
+  262165 drwx------  1000   1000      4096 15-Feb-2018 16:36 .config
+  262173 drwx------  1000   1000      4096  5-Nov-2017 16:34 .local
+  262183 drwx------  1000   1000      4096 15-Feb-2018 16:36 .gnupg
+  262247 drwx------  1000   1000      4096 15-Feb-2018 17:21 .gconf
+  262191 -rw-------  1000   1000     39041 22-Feb-2018 18:29 .bash_history
+  262277 -rw-------  1000   1000      5414 15-Feb-2018 16:36 .ICEauthority
+  262328 -rw-r--r--  1000   1000         0  5-Nov-2017 16:34 .sudo_as_admin_successful
+  262182 -rw-------  1000   1000      1261 15-Feb-2018 16:35 .xsession-errors.old
+  262354 drwx------  1000   1000      4096 12-Jan-2018 14:12 .mozilla
+  262504 drwx------  1000   1000      4096  7-Nov-2017 20:03 .pki
+  262888 drwx------  1000   1000      4096  7-Nov-2017 20:03 .gnome
+  263576 drwxrwxr-x  1000   1000      4096  4-Feb-2018 13:17 .java
+  266430 drwxrwxr-x  1000   1000      4096  7-Nov-2017 21:00 .PyCharmCE2017.2
+  267101 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:41 .virtualenvs
+  267102 drwxrwxr-x  1000   1000      4096 15-Feb-2018 12:00 Devel
+  267103 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:44 .nano
+  262673 -rw-rw-r--  1000   1000      9798 20-Nov-2017 17:27 client.ovpn
+  269470 drwxrwxr-x  1000   1000      4096 28-Nov-2017 16:51 .ipython
+  269467 -rw-------  1000   1000       463  6-Dec-2017 17:48 .python_history
+  269738 drwxrwxr-x  1000   1000      4096  4-Dec-2017 18:29 .PyCharmCE2017.3
+  401069 drwxrwxr-x  1000   1000      4096  8-Dec-2017 17:12 .aws
+  524342 drwxrwxr-x  1000   1000      4096  8-Dec-2017 19:07 aws
+  269256 -rw-rw-r--  1000   1000     12310  8-Dec-2017 18:40 nodesource_setup.sh
+  399736 drwxrwxr-x  1000   1000      4096  8-Dec-2017 18:46 .npm
+  401415 drwx------  1000   1000      4096 22-Feb-2018 17:42 .ssh
+X 525618 drwxrwxr-x  1000   1000      4096 22-Feb-2018 18:33 juniper
+  789531 drwxrwxr-x  1000   1000      4096 12-Jan-2018 14:28 JS-topologies
+  264642 -rw-rw-r--  1000   1000        58 16-Jan-2018 15:23 .gitconfig
+  664099 drwx------  1000   1000      4096  5-Feb-2018 12:05 .ansible
+  660707 drwxrwxr-x  1000   1000      4096 13-Feb-2018 16:29 .atom
+  265475 -rw-------  1000   1000         0  5-Feb-2018 12:03 .ansible_galaxy
+  263284 -rw-rw-r--  1000   1000       131 15-Feb-2018 11:15 .xinputrc
+  263444 -rw-r--r--  1000   1000       265 15-Feb-2018 11:34 .pam_environment
+  526278 drwxrwxr-x  1000   1000      4096 15-Feb-2018 11:56 TEMP
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-c
+X 264455 -rw-r-----  1000   1000       241 15-Feb-2018 16:36 .ICEauthority-l
+Directory /home
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+  262146 drwxr-xr-x  1000   1000      4096 15-Feb-2018 16:36 roman
+Directory /
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 .
+       2 drwxr-xr-x     0      0      4096 29-Jan-2018 14:35 ..
+      11 drwx------     0      0     16384  5-Nov-2017 19:27 lost+found
+ 1835009 drwxr-xr-x     0      0     12288 15-Feb-2018 16:35 etc
+ 1048577 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 media
+ 3145729 drwxr-xr-x     0      0      4096 15-Feb-2018 11:25 bin
+ 6029313 drwxr-xr-x     0      0      4096 15-Feb-2018 10:53 boot
+ 4718593 drwxr-xr-x     0      0      4096  1-Aug-2017 14:28 dev
+  262145 drwxr-xr-x     0      0      4096  5-Nov-2017 16:31 home
+ 6291457 drwxr-xr-x     0      0      4096 22-Nov-2017 16:17 lib
+ 4849665 drwxr-xr-x     0      0      4096 17-Jan-2018 15:02 lib64
+ 1179649 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 mnt
+ 2621441 drwxr-xr-x     0      0      4096  5-Feb-2018 11:30 opt
+ 4456449 drwxr-xr-x     0      0      4096 12-Apr-2016 23:14 proc
+ 1572865 drwx------     0      0      4096  5-Feb-2018 11:09 root
+ 2883585 drwxr-xr-x     0      0      4096  1-Aug-2017 14:30 run
+  786433 drwxr-xr-x     0      0     12288 15-Feb-2018 11:25 sbin
+ 6815745 drwxr-xr-x     0      0      4096 29-Apr-2017 11:38 snap
+ 1310721 drwxr-xr-x     0      0      4096  1-Aug-2017 14:17 srv
+ 3014657 drwxr-xr-x     0      0      4096  5-Feb-2016 12:48 sys
+ 4980737 drwxrwxrwt     0      0      4096 22-Feb-2018 18:29 tmp
+ 1441793 drwxr-xr-x     0      0      4096  1-Aug-2017 14:24 usr
+ 3276801 drwxr-xr-x     0      0      4096  1-Aug-2017 14:34 var
+      16 lrwxrwxrwx     0      0        30 29-Jan-2018 14:35 vmlinuz
+      15 lrwxrwxrwx     0      0        33 29-Jan-2018 14:35 initrd.img
+  917505 drwxrwxr-x     0      0      4096  5-Nov-2017 16:29 cdrom
+X     14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.88444
+      12 lrwxrwxrwx     0      0        33 24-Jan-2018 15:04 initrd.img.old
+      14 lrwxrwxrwx     0      0        30 24-Jan-2018 15:04 vmlinuz.old
+
+TestDisk exited normally.
