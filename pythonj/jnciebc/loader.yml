@@ -19,8 +19,10 @@ dir:
 
 auth:
   user: roman
+  # password or ssh?
+  method: 5
   # set password to False if ssh authentication used - it will be ignored
-  password: False
+  password: junos1
 
 # Choose library (PyEz or NAPALM) to push config
-driver: pyez
+driver: junos

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from __future__ import print_function
 import sys
 from tools.yml_parser import parse_yml
@@ -14,8 +16,14 @@ class Loader:
 
         # private attributes
         parsed_loader_yml = parse_yml()
-        self._auth = parsed_loader_yml.get('auth')
         self._hosts = parsed_loader_yml.get('hosts')
+        self._auth = parsed_loader_yml.get('auth')
+        self._user = self._auth.get('user')
+        self._auth_method = self._auth.get('method')
+        if self._auth_method == 'password':
+            self._pass = self._auth.get('password')
+        else:
+            self._pass = False
 
     def _create_base_config(self, host):
         """
@@ -47,6 +55,18 @@ class Loader:
             load_cfg_pyez(host, _conf, _user, _pass, mode='overwrite')
         else:
             return None
+
+    def prepare_lab_config(self, config):
+        """
+        Removes unsupported lines from original config.
+        E.g. Juniper's configs for JNCIE SP bootcamp are created for SRX devices.
+        There is "security" section there, which is not supported by vMX - config load fails.
+        NOTE: The task is solved in remove_unsupported.py -
+        routine integration with other modules is to be done
+        :param config:
+        :return:
+        """
+        raise NotImplementedError
 
     def load_lab_config(self, lab, host):
         """
@@ -105,7 +125,7 @@ def main():
         x.load_base_config(_host)
         x.load_lab_config(_lab_number, _host)
     else:
-        print('Please provide lab number OR lab number and hostname')
+        print('Please provide CLI arguments: lab number OR lab number and hostname')
         sys.exit(1)
 
 
