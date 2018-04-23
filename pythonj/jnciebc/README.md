@@ -10,5 +10,5 @@ Note: the configs themselves are not provided here as they are Juniper's intelle
 Configuration
 =============
 
-Is done int loader.yml 
+loader.yml 
 
