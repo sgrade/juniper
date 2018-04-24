@@ -1,4 +1,4 @@
-Configs for Juniper vMX routers for the following lab:
+Configs for Juniper vMX routers (for KVM) for the following lab:
 "JNCIE Service Provider Bootcamp (JNCIE-SP-12.a)"
 
 Note: 
