@@ -54,15 +54,19 @@ class LabConfigHandler:
         for filename in file_list:
             # print('Checking', filename, 'where first symbols are', filename[:2])
             if dev[:2] == filename.lower()[:2] and filename.split('.')[1] == 'config':
-                # print('returning', filename)
+                print('returning', filename)
                 #return filename
                 self._config_filename = filename
-            # with elif it will always take .conf => we need else instead of elif
-            # elif dev[:2] == filename.lower()[:2] and filename.split('.')[1] == 'conf':
-            else:
-                # print('returning', filename)
-                self._config_filename = filename
-        return self._config_filename
+                break
+        if self._config_filename:
+            return self._config_filename
+        else:
+            for filename in file_list:
+                if dev[:2] == filename.lower()[:2] and filename.split('.')[1] == 'conf':
+                    # print('returning', filename)
+                    self._config_filename = filename
+                    break
+            return self._config_filename
 
     def _get_full_path(self):
         """Creates absolute path from config directory and filename"""
