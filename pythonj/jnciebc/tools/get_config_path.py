@@ -57,7 +57,9 @@ class LabConfigHandler:
                 # print('returning', filename)
                 #return filename
                 self._config_filename = filename
-            elif dev[:2] == filename.lower()[:2] and filename.split('.')[1] == 'conf':
+            # with elif it will always take .conf => we need else instead of elif
+            # elif dev[:2] == filename.lower()[:2] and filename.split('.')[1] == 'conf':
+            else:
                 # print('returning', filename)
                 self._config_filename = filename
         return self._config_filename

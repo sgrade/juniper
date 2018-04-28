@@ -7,7 +7,7 @@ def remove_unsupported(filename, section):
         print(content)
 
 
-filename = '/home/roman/JS-topologies/JNCIE-SP_Bootcamp_12a_L10/configset/VR-lab6-start.config'
+# filename = '/home/roman/JS-topologies/JNCIE-SP_Bootcamp_12a_L10/configset/VR-lab6-start.config'
 section = """security {
     forwarding-options {
         family {
@@ -24,6 +24,5 @@ section = """security {
     }
 }
 """
-
 
 remove_unsupported(filename, section)
