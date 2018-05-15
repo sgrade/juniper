@@ -3,6 +3,7 @@
 # /home/roman/JS-topologies/JNCIE-SP_Bootcamp_12a_L9/configset/
 
 # Hostnames in lower case please
+# Hostnames must be resolvable (e.g. via /etc/hosts)
 hosts:
   r1: 172.16.29.201
   r2: 172.16.29.202
