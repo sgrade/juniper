@@ -66,6 +66,11 @@ class LabConfigHandler:
                     # print('returning', filename)
                     self._config_filename = filename
                     break
+                # Special case for lab 8, when filename for vrdevice is rec2-vr.conf
+                elif dev[:2] == filename.lower()[5:7] and filename.split('.')[1] == 'conf':
+                    # print('returning', filename)
+                    self._config_filename = filename
+                    break
             return self._config_filename
 
     def _get_full_path(self):
