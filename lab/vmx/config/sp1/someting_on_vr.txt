@@ -1,0 +1,8 @@
+The ..._on_vr.conf created manually from related conf files. Create logical systems for them, then manually load configs to the related logical system. For example:
+
+copy the config to the clipboard (e.g. with Ctrl+C)
+edit logical system Rec1
+load merge relative terminal
+paste the config from the clipboard (e.g. with the Ctrl+V)
+Ctrl+D
+commit
