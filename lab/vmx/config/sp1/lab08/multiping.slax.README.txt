@@ -1,0 +1,2 @@
+upload multiping.slax to /var/db/scripts/op/ on vrdevice
+
