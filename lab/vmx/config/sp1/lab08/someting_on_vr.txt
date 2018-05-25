@@ -1,3 +1,7 @@
+
+Temporary solution: 
+!!! Content of Rec2_on_vr.conf duplicates the same content in Rec2-vr.conf - delete relevant part of the config.
+
 The ..._on_vr.conf created manually from related conf files. Create logical systems for them, then manually load configs to the related logical system. For example:
 
 copy the config to the clipboard (e.g. with Ctrl+C)
