@@ -10,7 +10,7 @@ hosts:
   r3: 172.16.29.203
   r4: 172.16.29.204
   r5: 172.16.29.205
-# vrdevice: 172.16.29.209
+  vrdevice: 172.16.29.209
 
 dir:
   # no trailing "/" please

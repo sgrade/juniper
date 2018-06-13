@@ -126,6 +126,8 @@ def main():
         x.load_lab_config(_lab_number, _host)
     else:
         print('Please provide CLI arguments: lab number OR lab number and hostname')
+        print('Lab numbers could be 1, 2, ... 11')
+        print('Hostnames are: r1, r2, r3, r4, r5, vrdevice')
         sys.exit(1)
 
 

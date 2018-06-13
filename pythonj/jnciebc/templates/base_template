@@ -21,14 +21,6 @@ system {
             ssh;
         }
     }
-    archival {
-        configuration {
-            transfer-on-commit;
-            archive-sites {
-                "ftp://roman:ubuntu@172.16.30.240/juniper/config-backups";
-            }
-        }
-    }                                   
 }
 chassis {
     fpc 0 {
