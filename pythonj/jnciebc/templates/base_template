@@ -30,6 +30,7 @@ chassis {
             }
             number-of-ports 14;
         }
+        lite-mode;
         flexible-queuing-mode;
     }
 }
