@@ -2,6 +2,7 @@
 
 from __future__ import print_function
 import sys
+import time
 from tools.yml_parser import parse_yml
 from tools.get_config_path import LabConfigHandler
 from tools.create_base_config import address_replace
@@ -94,9 +95,10 @@ class Loader:
         for host in self._hosts:
             ip = self._hosts.get(host)
             print('')
-            #print('======================')
             print('Starting with', host, 'using IP', ip)
             self.load_base_config(host)
+            # waiting 10 seconds, because on low-performance server base config need time to apply
+            time.sleep(10)
             self.load_lab_config(lab, host)
             print('Finished with', host)
             print('======================')
