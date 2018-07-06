@@ -1,5 +1,6 @@
 from __future__ import print_function
 import sys
+import time
 from jnpr.junos import Device
 from jnpr.junos.utils.config import Config
 from jnpr.junos.exception import ConnectError
@@ -7,6 +8,7 @@ from jnpr.junos.exception import LockError
 from jnpr.junos.exception import UnlockError
 from jnpr.junos.exception import ConfigLoadError
 from jnpr.junos.exception import CommitError
+from jnpr.junos.exception import RpcTimeoutError
 
 
 def load_cfg_pyez(hostname, conf_file, username, password, mode='overwrite'):
@@ -66,18 +68,27 @@ def load_cfg_pyez(hostname, conf_file, username, password, mode='overwrite'):
             dev.close()
             return
 
-    print ("Committing the configuration")
-    try:
-        dev.cu.commit(comment='Loaded by example.')
-    except CommitError as err:
-        print ("Unable to commit configuration: {0}".format(err))
-        print ("Unlocking the configuration")
+    for i in range(1, 3):
+        print ("Committing the configuration")
         try:
-            dev.cu.unlock()
-        except UnlockError as err:
-            print ("Unable to unlock configuration: {0}".format(err))
-        dev.close()
-        return
+            dev.cu.commit(comment='Loaded by example.')
+        except CommitError as err:
+            print ("Unable to commit configuration: {0}".format(err))
+            print ("Unlocking the configuration")
+            try:
+                dev.cu.unlock()
+            except UnlockError as err:
+                print ("Unable to unlock configuration: {0}".format(err))
+            dev.close()
+            return
+        except RpcTimeoutError:
+            print("RpcTimeoutError. Pausing for 20 seconds")
+            # waiting 10 seconds, because on low-performance server base config need time to apply
+            time.sleep(20)
+            i += 1
+            print("Attempt number", i)
+            continue
+        break
 
     # End the NETCONF session and close the connection
     dev.close()
