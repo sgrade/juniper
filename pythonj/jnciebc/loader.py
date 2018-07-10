@@ -4,8 +4,9 @@ from __future__ import print_function
 import sys
 import time
 from tools.yml_parser import parse_yml
-from tools.get_config_path import LabConfigHandler
+from tools.get_config_path import lab_config_handler
 from tools.create_base_config import address_replace
+from tools.create_lab_config import remove_unsupported
 from tools.load_config_pyez import load_cfg_pyez
 
 
@@ -57,7 +58,7 @@ class Loader:
         else:
             return None
 
-    def prepare_lab_config(self, config):
+    def _create_lab_config(self, config):
         """
         Removes unsupported lines from original config.
         E.g. Juniper's configs for JNCIE SP bootcamp are created for SRX devices.
@@ -78,7 +79,7 @@ class Loader:
         :param host: hostname of the device
         :type host: string
         """
-        _conf = LabConfigHandler(lab, host).path
+        _conf = lab_config_handler(lab, host).path
         _user = self._auth.get('user')
         _pass = self._auth.get('password')
         load_cfg_pyez(host, _conf, _user, _pass, mode='merge')
@@ -98,7 +99,7 @@ class Loader:
             print('Starting with', host, 'using IP', ip)
             self.load_base_config(host)
             # waiting 10 seconds, because on low-performance server base config need time to apply
-            time.sleep(10)
+            # time.sleep(10)
             self.load_lab_config(lab, host)
             print('Finished with', host)
             print('======================')

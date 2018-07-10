@@ -2,8 +2,8 @@
 # If lab configs for lab 9 are located in
 # /home/roman/JS-topologies/JNCIE-SP_Bootcamp_12a_L9/configset/
 
-# Hostnames in lower case please
-# Hostnames must be resolvable (e.g. via /etc/hosts)
+# Host names in lower case
+# Host names must be resolvable (e.g. via /etc/hosts)
 hosts:
   r1: 172.16.29.201
   r2: 172.16.29.202
@@ -13,7 +13,7 @@ hosts:
   vrdevice: 172.16.29.209
 
 dir:
-  # no trailing "/" please
+  # no trailing "/"
   top_dir: /home/roman/JS-topologies
   subdir_level_1: JNCIE-SP_Bootcamp_12a_L
   subdir_level_2: configset

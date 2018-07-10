@@ -4,7 +4,7 @@ import os
 from yml_parser import parse_yml
 
 
-class LabConfigHandler:
+class lab_config_handler:
     """Gets absolute path of network element config file."""
 
     def __init__(self, lab, hostname):
@@ -106,7 +106,7 @@ def main():
     else:
         lab_number = sys.argv[1]
         hostname = sys.argv[2]
-        print(LabConfigHandler(lab_number, hostname).path)
+        print(lab_config_handler(lab_number, hostname).path)
 
 
 if __name__ == '__main__':
