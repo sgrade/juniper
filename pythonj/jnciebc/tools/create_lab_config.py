@@ -1,5 +1,4 @@
 from __future__ import print_function
-import fileinput
 import shutil
 
 from get_config_path import lab_config_handler
