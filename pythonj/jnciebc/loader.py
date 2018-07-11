@@ -2,11 +2,11 @@
 
 from __future__ import print_function
 import sys
-import time
+# import time
 from tools.yml_parser import parse_yml
-from tools.get_config_path import lab_config_handler
-from tools.create_base_config import address_replace
-from tools.create_lab_config import remove_unsupported
+# from tools.get_config_path import lab_config_handler
+from tools.create_base_config import prepare_base_config
+from tools.create_lab_config import prepare_lab_config
 from tools.load_config_pyez import load_cfg_pyez
 
 
@@ -36,7 +36,7 @@ class Loader:
         """
         _mgmt_ip = self._hosts.get(host)
         if _mgmt_ip:
-            _base_conf_filename = address_replace(_mgmt_ip)
+            _base_conf_filename = prepare_base_config(_mgmt_ip)
             return _base_conf_filename
         else:
             print('Cannot get management IP from loader.yml')
@@ -58,7 +58,8 @@ class Loader:
         else:
             return None
 
-    def _create_lab_config(self, config):
+    @staticmethod
+    def _create_lab_config(lab, host):
         """
         Removes unsupported lines from original config.
         E.g. Juniper's configs for JNCIE SP bootcamp are created for SRX devices.
@@ -68,7 +69,7 @@ class Loader:
         :param config:
         :return:
         """
-        raise NotImplementedError
+        prepare_lab_config(lab, host)
 
     def load_lab_config(self, lab, host):
         """
@@ -79,7 +80,7 @@ class Loader:
         :param host: hostname of the device
         :type host: string
         """
-        _conf = lab_config_handler(lab, host).path
+        _conf = prepare_lab_config(lab, host)
         _user = self._auth.get('user')
         _pass = self._auth.get('password')
         load_cfg_pyez(host, _conf, _user, _pass, mode='merge')
@@ -96,13 +97,28 @@ class Loader:
         for host in self._hosts:
             ip = self._hosts.get(host)
             print('')
-            print('Starting with', host, 'using IP', ip)
+            print('Processing', host, 'with IP', ip)
             self.load_base_config(host)
             # waiting 10 seconds, because on low-performance server base config need time to apply
             # time.sleep(10)
             self.load_lab_config(lab, host)
             print('Finished with', host)
             print('======================')
+
+        # Checking if custom configs should be loaded
+        #
+        # lab 8 (Multicast) requires additional devices as multicast receivers
+
+        """
+        if lab == 8:
+            # create logical systems on vr for receivers 1, 3, 4
+            sdfsf
+
+            # load multiping.slax script
+        else:
+            print('lab != 8????')
+        """
+
         print('')
         print('Done!')
         print('')
@@ -129,8 +145,8 @@ def main():
         x.load_lab_config(_lab_number, _host)
     else:
         print('Please provide CLI arguments: lab number OR lab number and hostname')
-        print('Lab numbers could be 1, 2, ... 11')
-        print('Hostnames are: r1, r2, r3, r4, r5, vrdevice')
+        print('allowed lab numbers: 1, 2, ... 11')
+        print('allowed host names: r1, r2, r3, r4, r5, vrdevice')
         sys.exit(1)
 
 

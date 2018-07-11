@@ -33,7 +33,7 @@ def load_cfg_pyez(hostname, conf_file, username, password, mode='overwrite'):
     dev.bind(cu=Config)
 
     # Lock the configuration
-    print ("Locking the configuration")
+    # print ("Locking the configuration")
     try:
         dev.cu.lock()
     except LockError as err:
@@ -41,7 +41,7 @@ def load_cfg_pyez(hostname, conf_file, username, password, mode='overwrite'):
         dev.close()
         return
 
-    print("Loading config: ", conf_file)
+    print("Loading", conf_file)
     if mode.lower() == 'overwrite':
         try:
             #dev.cu.load(path=conf_file, format='text', merge=True)
@@ -68,8 +68,8 @@ def load_cfg_pyez(hostname, conf_file, username, password, mode='overwrite'):
             dev.close()
             return
 
-    for i in range(1, 3):
-        print ("Committing the configuration")
+    for i in range(1, 4):
+        # print ("Committing the configuration")
         try:
             dev.cu.commit(comment='Loaded by example.')
         except CommitError as err:

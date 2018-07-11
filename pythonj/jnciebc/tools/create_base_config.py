@@ -6,7 +6,7 @@ import sys
 import os
 
 
-def address_replace(ip_address):
+def prepare_base_config(ip_address):
     """
     Creates base device config from base template.
 
@@ -15,11 +15,13 @@ def address_replace(ip_address):
     :return: base config file name
     """
 
+    print('Preparing base config')
+
     work_dir = os.getcwd()
     base_template = work_dir+'/templates/base_template'
 
     # copy essential template to a tmp directory
-    print('Filling template with the IP address:', ip_address)
+    # print('Filling template with the IP address:', ip_address)
     tmp_file = '/tmp/base.' + str(ip_address)
     shutil.copyfile(base_template, tmp_file)
 
@@ -35,5 +37,5 @@ if __name__ == '__main__':
         print('Please provide the device\'s IP address')
         sys.exit(1)
     address = sys.argv[1]
-    address_replace(address)
+    prepare_base_config(address)
 

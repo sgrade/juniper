@@ -1,4 +1,5 @@
 from __future__ import print_function
+import sys
 import shutil
 
 from get_config_path import lab_config_handler
@@ -50,22 +51,33 @@ def prepare_lab_config(lab, host):
     _conf = lab_config_handler(lab, host).path
 
     # copy the config to temp directory
-    print('Preparing lab config for', host)
+    print('Preparing lab config')
     tmp_file = '/tmp/lab.' + str(host)
     shutil.copyfile(_conf, tmp_file)
 
     # further operations will be with the tmp config to avoid breaking original config
+    # further operations will be with the tmp config to avoid breaking original config
     # remove unsupported lines
+    # print('Lab config copied to:', tmp_file)
     try:
         remove_unsupported(tmp_file)
-        print('Lab config returned:', tmp_file)
-        return tmp_file
+        remove_unsupported(tmp_file)
+    except ValueError:
+        # print('Unsupported statements are removed or not found')
+        pass
     except Exception as e:
         print(e)
+        print('Error removing unsupported statements')
+    return tmp_file
 
 
 if __name__ == "__main__":
     # create_lab_config(lab_number, hostname)
-    lab_number = 8
-    hostname = 'vrdevice'
-    prepare_lab_config(lab_number, hostname)
+    if len(sys.argv) == 3:
+        _lab_number = sys.argv[1]
+        _host = sys.argv[2]
+        prepare_lab_config(_lab_number, _host)
+    else:
+        print('Please provide CLI arguments: lab number and hostname')
+        print('allowed lab numbers: 1, 2, ... 11')
+        print('allowed host names: r1, r2, r3, r4, r5, vrdevice')

@@ -26,7 +26,7 @@ def save_conf(vars_filename):
         if not os.path.isdir(full_path):
             raise
 
-    result = subprocess.run(["ansible-playbook", "-i", "playbook-core/hosts", "playbook-core/pb.junos_facts.get_config-text.yml", "-vvvv"])
+    result = subprocess.run(["ansible-playbook", "-i", "playbook-core/hosts", "playbook-core/pb.junos_facts.prepare_one_config-text.yml", "-vvvv"])
     print(result)
 
 if __name__ == '__main__':
