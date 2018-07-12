@@ -102,18 +102,19 @@ class Loader:
         Second, it replaces devices' configs with the ones from some directory
         (e.g. provided with JNCIE bootcamp course).
         """
-        for host in self._hosts:
+        hosts_sorted = sorted(self._hosts)
+        hosts_done = list()
+        for host in hosts_sorted:
             ip = self._hosts.get(host)
             print('')
-            print('Processing', host, 'with IP', ip)
+            print('Processing', host, 'with IP address', ip)
             self.load_base_config(host)
-            # waiting 10 seconds, because on low-performance server base config need time to apply
-            # time.sleep(10)
             self.load_lab_config(lab, host)
-            print('Finished with', host)
+            print('Done with', host)
+            hosts_done.append(host)
             print('======================')
         print('')
-        print('Done!')
+        print('Done with', ", ".join(hosts_done))
         print('')
 
 
