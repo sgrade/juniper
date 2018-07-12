@@ -3,11 +3,59 @@ import sys
 from get_config_path import lab_config_handler
 from create_lab_config import remove_unsupported
 
+"""
+Original configs from the bootcamp are designed for separate routers
+This script allows avoid creating separate routers 
+Instead it creates config file for vrdevice with several logical systems
+"""
+
+
+def change_interfaces(interface, content):
+    """Changes interface id in the content (config)
+
+    :param int interface: interface id, e.g. 2
+    :param list content: config content
+    :return: list content: changed config
+    """
+    for line in content:
+        line_splitted = line.strip().split(' ')
+
+        try:
+            # print(line_splitted[0].split('/')[0])
+            if line_splitted[0].split('/')[0] == 'ge-0':
+                line_index = content.index(line)
+                # print(content[line_index])
+                content[line_index] = str("    ge-0/0/" + str(interface) + "{\n")
+                # print(content[line_index])
+                break
+        except Exception as e:
+            print(e)
+            continue
+
+    return content
+
+
+def interfaces_lab8(conf, content):
+    """Specifies interface ids for the config files"""
+    interface_number = 0
+    if conf == 'Rec1.conf':
+        interface_number = 2
+    elif conf == 'Rec3.conf':
+        interface_number = 4
+    elif conf == 'Rec4.conf':
+        interface_number = 5
+
+    if interface_number == 0:
+        return content
+    else:
+        return change_interfaces(interface_number, content)
+
 
 def prepare_one_config(dir, conf):
+    """Processes one config file"""
 
     config_path = str(dir+'/'+conf)
-    print('processing config: ', config_path)
+    # print('processing config: ', config_path)
 
     with open(config_path, 'r') as c:
         # get the config except first two lines like these ones
@@ -20,7 +68,7 @@ def prepare_one_config(dir, conf):
         for line in c_lines:
             if line.startswith("}"):
                 line_index = c_lines.index(line)
-                print(line, line_index)
+                # print(line, line_index)
                 break
         del(c_lines[:line_index+1])
 
@@ -29,22 +77,19 @@ def prepare_one_config(dir, conf):
             if line.lstrip().startswith("description"):
                 c_lines.remove(line)
 
+        # change interface id
+        c_lines = interfaces_lab8(conf, c_lines)
+
         return "".join(c_lines)
 
 
-def create_custom_config(lab, host, configs):
-    """
-    Creates base device config from base template.
-
-    Replaces the IP_ADDR in the template with the device's IP address
-    :param ip_address: device management IP address
-    :return: base config file name
-    """
+def prepare_custom_config(lab, host, configs):
+    """Creates custom config from several config files."""
 
     _conf_dir = lab_config_handler(lab, host).lab_dir
 
     print('Preparing custom config')
-    tmp_file = '/tmp/custom.' + lab + str(host)
+    tmp_file = '/tmp/' + str(host) +'.' + 'custom.lab' + lab
     with open(tmp_file, 'w') as f:
         f.write('logical-systems {\n')
 
@@ -64,6 +109,9 @@ def create_custom_config(lab, host, configs):
         # closing logical-systemS
         f.write('}\n')
 
+    # remove unsupported statements from the config
+    remove_unsupported(tmp_file)
+
     return tmp_file
 
 
@@ -72,7 +120,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 3:
         _lab_number = sys.argv[1]
         _host = sys.argv[2]
-        create_custom_config(_lab_number, _host, sys.argv[3:])
+        prepare_custom_config(_lab_number, _host, sys.argv[3:])
     else:
         print('Please provide CLI arguments: ')
         print('lab number, hostname/IP, config1, config2, ..., configN')

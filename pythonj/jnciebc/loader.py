@@ -7,6 +7,7 @@ from tools.yml_parser import parse_yml
 # from tools.get_config_path import lab_config_handler
 from tools.create_base_config import prepare_base_config
 from tools.create_lab_config import prepare_lab_config
+from tools.create_lab8_config import prepare_custom_config
 from tools.load_config_pyez import load_cfg_pyez
 
 
@@ -28,15 +29,14 @@ class Loader:
             self._pass = False
 
     def _create_base_config(self, host):
-        """
-        Creates base config from the template
+        """Creates base config from the template
 
         :param host: hostname of the device
         :type host: string
         """
         _mgmt_ip = self._hosts.get(host)
         if _mgmt_ip:
-            _base_conf_filename = prepare_base_config(_mgmt_ip)
+            _base_conf_filename = prepare_base_config(host, _mgmt_ip)
             return _base_conf_filename
         else:
             print('Cannot get management IP from loader.yml')
@@ -44,8 +44,7 @@ class Loader:
             return None
 
     def load_base_config(self, host):
-        """
-        Replaces existing network element config with the one based on template
+        """Replaces existing network element config with the one based on template
 
         :param host: hostname of the device
         :type host: string
@@ -60,8 +59,8 @@ class Loader:
 
     @staticmethod
     def _create_lab_config(lab, host):
-        """
-        Removes unsupported lines from original config.
+        """Removes unsupported lines from original config.
+
         E.g. Juniper's configs for JNCIE SP bootcamp are created for SRX devices.
         There is "security" section there, which is not supported by vMX - config load fails.
         NOTE: The task is solved in remove_unsupported.py -
@@ -72,18 +71,27 @@ class Loader:
         prepare_lab_config(lab, host)
 
     def load_lab_config(self, lab, host):
-        """
-        Merges existing network element config with lab config
+        """Merges existing network element config with lab config
 
-        :param lab: lab number
-        :type lab: int
-        :param host: hostname of the device
-        :type host: string
+        :param int lab: lab number
+        :param str host: hostname of the device
         """
         _conf = prepare_lab_config(lab, host)
         _user = self._auth.get('user')
         _pass = self._auth.get('password')
         load_cfg_pyez(host, _conf, _user, _pass, mode='merge')
+
+        # Checking if custom configs should be loaded
+        #
+        # lab 8 (Multicast) requires additional devices as multicast receivers
+        if lab == str(8) and host == 'vrdevice':
+            # create logical systems on vr for receivers 1, 3, 4
+            custom_configs = ['Rec1.conf', 'Rec3.conf', 'Rec4.conf']
+            _conf = prepare_custom_config(lab, host, custom_configs)
+            load_cfg_pyez(host, _conf, _user, _pass, mode='merge')
+
+            # load multiping.slax script
+
 
     def load_all_configs(self, lab):
         """
@@ -104,21 +112,6 @@ class Loader:
             self.load_lab_config(lab, host)
             print('Finished with', host)
             print('======================')
-
-        # Checking if custom configs should be loaded
-        #
-        # lab 8 (Multicast) requires additional devices as multicast receivers
-
-        """
-        if lab == 8:
-            # create logical systems on vr for receivers 1, 3, 4
-            sdfsf
-
-            # load multiping.slax script
-        else:
-            print('lab != 8????')
-        """
-
         print('')
         print('Done!')
         print('')

@@ -6,7 +6,7 @@ import sys
 import os
 
 
-def prepare_base_config(ip_address):
+def prepare_base_config(host, ip_address):
     """
     Creates base device config from base template.
 
@@ -22,7 +22,7 @@ def prepare_base_config(ip_address):
 
     # copy essential template to a tmp directory
     # print('Filling template with the IP address:', ip_address)
-    tmp_file = '/tmp/base.' + str(ip_address)
+    tmp_file = '/tmp/' + host + '.base'
     shutil.copyfile(base_template, tmp_file)
 
     # writing the IP address instead of the ip_addr place holder
@@ -33,9 +33,10 @@ def prepare_base_config(ip_address):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print('Please provide the device\'s IP address')
+    if len(sys.argv) < 3:
+        print('Please provide CLI arguments: hostname and IP address')
         sys.exit(1)
-    address = sys.argv[1]
-    prepare_base_config(address)
+    hostname = sys.argv[1]
+    address = sys.argv[2]
+    prepare_base_config(hostname, address)
 

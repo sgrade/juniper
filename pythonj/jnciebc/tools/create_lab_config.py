@@ -24,19 +24,29 @@ def remove_unsupported(conf):
         }
     }"""
 
-    with open(conf, 'r+') as c:
-        c_lines = c.readlines()
-        c_lines_stripped = [line.strip() for line in c_lines]
+    # there might be more than one occurence of unsupported statement in the file
+    for i in range(0, 5):
 
-        start_index = c_lines_stripped.index("security {")
-        section_length = len(unsupported_statement.split('\n'))
-        end_index = start_index + section_length
+        with open(conf, 'r+') as c:
+            c_lines = c.readlines()
+            c_lines_stripped = [line.strip() for line in c_lines]
 
-        updated_content = ("".join(c_lines[:start_index] + c_lines[end_index:]))
+            try:
+                start_index = c_lines_stripped.index("security {")
+                section_length = len(unsupported_statement.split('\n'))
+                end_index = start_index + section_length
 
-        c.seek(0)
-        c.truncate(0)
-        c.write(updated_content)
+                updated_content = ("".join(c_lines[:start_index] + c_lines[end_index:]))
+
+                c.seek(0)
+                c.truncate(0)
+                c.write(updated_content)
+
+            except Exception as e:
+                # print(e, i)
+                break
+
+        i += 1
 
 
 def prepare_lab_config(lab, host):
@@ -52,22 +62,13 @@ def prepare_lab_config(lab, host):
 
     # copy the config to temp directory
     print('Preparing lab config')
-    tmp_file = '/tmp/lab.' + str(host)
+    tmp_file = '/tmp/' + str(host) + '.lab'
     shutil.copyfile(_conf, tmp_file)
 
     # further operations will be with the tmp config to avoid breaking original config
-    # further operations will be with the tmp config to avoid breaking original config
-    # remove unsupported lines
     # print('Lab config copied to:', tmp_file)
-    try:
-        remove_unsupported(tmp_file)
-        remove_unsupported(tmp_file)
-    except ValueError:
-        # print('Unsupported statements are removed or not found')
-        pass
-    except Exception as e:
-        print(e)
-        print('Error removing unsupported statements')
+    remove_unsupported(tmp_file)
+
     return tmp_file
 
 
