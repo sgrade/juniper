@@ -8,6 +8,7 @@ from tools.yml_parser import parse_yml
 from tools.create_base_config import prepare_base_config
 from tools.create_lab_config import prepare_lab_config
 from tools.create_lab8_config import prepare_custom_config
+from tools.install_script import install_script
 from tools.load_config_pyez import load_cfg_pyez
 
 
@@ -85,13 +86,15 @@ class Loader:
         #
         # lab 8 (Multicast) requires additional devices as multicast receivers
         if lab == str(8) and host == 'vrdevice':
-            # create logical systems on vr for receivers 1, 3, 4
-            custom_configs = ['Rec1.conf', 'Rec3.conf', 'Rec4.conf']
-            _conf = prepare_custom_config(lab, host, custom_configs)
+            # create custom config for the device
+            configs = ['Rec1.conf', 'Rec3.conf', 'Rec4.conf']
+            _conf = prepare_custom_config(lab, host, configs)
+
+            # load created config to the device
             load_cfg_pyez(host, _conf, _user, _pass, mode='merge')
 
             # load multiping.slax script
-
+            install_script(lab, host, _user, _pass, 'multiping.slax', '/var/db/scripts/op/')
 
     def load_all_configs(self, lab):
         """

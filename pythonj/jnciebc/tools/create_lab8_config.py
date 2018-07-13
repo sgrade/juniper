@@ -3,7 +3,8 @@ import sys
 from get_config_path import lab_config_handler
 from create_lab_config import remove_unsupported
 
-"""
+"""Creates custom config for lab8
+
 Original configs from the bootcamp are designed for separate routers
 This script allows avoid creating separate routers 
 Instead it creates config file for vrdevice with several logical systems
@@ -89,7 +90,7 @@ def prepare_custom_config(lab, host, configs):
     _conf_dir = lab_config_handler(lab, host).lab_dir
 
     print('Preparing custom config')
-    tmp_file = '/tmp/' + str(host) +'.' + 'custom.lab' + lab
+    tmp_file = '/tmp/' + str(host) + '.' + 'custom.lab' + lab
     with open(tmp_file, 'w') as f:
         f.write('logical-systems {\n')
 
