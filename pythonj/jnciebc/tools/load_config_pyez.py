@@ -72,6 +72,8 @@ def load_cfg_pyez(hostname, conf_file, username, password, mode='overwrite'):
         # print ("Committing the configuration")
         try:
             dev.cu.commit(comment='Loaded by example.')
+            if i > 2:
+                print('Loaded')
         except CommitError as err:
             print ("Unable to commit configuration: {0}".format(err))
             print ("Unlocking the configuration")
