@@ -20,13 +20,22 @@ def change_interfaces(interface, content):
     """
     for line in content:
         line_splitted = line.strip().split(' ')
+        # print(line_splitted)
 
         try:
             # print(line_splitted[0].split('/')[0])
+
+            # interfaces section
             if line_splitted[0].split('/')[0] == 'ge-0':
                 line_index = content.index(line)
                 # print(content[line_index])
-                content[line_index] = str("    ge-0/0/" + str(interface) + "{\n")
+                content[line_index] = str("    ge-0/0/" + str(interface) + ' ' + "{\n")
+                # print(content[line_index])
+            # protocols pim section
+            elif line_splitted[1].split('/')[0] == 'ge-0':
+                line_index = content.index(line)
+                # print(content[line_index])
+                content[line_index] = str("        interface ge-0/0/" + str(interface) + '.0' + ";\n")
                 # print(content[line_index])
                 break
         except Exception as e:
