@@ -6,6 +6,7 @@ from get_config_path import lab_config_handler
 
 
 def remove_unsupported(conf):
+    """Removes config parts, that are not supported by vMX"""
 
     # vMX does not support the following
     unsupported_statement = """security {
@@ -23,6 +24,9 @@ def remove_unsupported(conf):
             }
         }
     }"""
+
+    # Remove LACP on ae interfaces as vMX does not support LACP on Linux bridges
+    # TO BE IMPLEMENTED
 
     # there might be more than one occurence of unsupported statement in the file
     for i in range(0, 5):
