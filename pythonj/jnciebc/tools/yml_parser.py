@@ -2,8 +2,7 @@ import yaml
 
 
 def parse_yml(config='loader.yml'):
-    """
-    Creates a dictionary from config file
+    """Creates a dictionary from config file
 
     :type config: string
     :rtype: dictionary
