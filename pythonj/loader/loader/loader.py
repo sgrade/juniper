@@ -119,7 +119,6 @@ class Loader:
         print('')
 
 
-'''
 def main():
     """
     Allows using script with CLI arguments
@@ -148,4 +147,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-'''
